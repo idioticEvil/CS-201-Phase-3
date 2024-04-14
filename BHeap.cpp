@@ -37,7 +37,7 @@ template <typename KeyType> class BHeap {
 
             // Insert all keys into the heap
             for (int i = 0; i < s; i++) {
-                insert(K[i], true);
+                insert(K[i]);
             }
         }
 
