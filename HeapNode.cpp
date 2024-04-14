@@ -184,6 +184,29 @@ template <typename KeyType> class HeapNode {
         }
 
         /**
+         * @brief Moves children of a node up to the root list
+         */
+        void shiftChildrenUp() {
+            if (degree > 0) { // If the node has children
+                children.getFrontValue()->setLeftSibling(leftSibling);
+                leftSibling->setRightSibling(children.getFrontValue());
+                children.getEndValue()->setRightSibling(rightSibling);
+                rightSibling->setLeftSibling(children.getEndValue());
+            } else { // If the node has no children
+                leftSibling->setRightSibling(rightSibling);
+                rightSibling->setLeftSibling(leftSibling);
+            }
+        }
+
+        /**
+         * @brief Disconnects the node from its siblings
+         */
+        void disconnect() {
+            leftSibling = nullptr;
+            rightSibling = nullptr;
+        }
+
+        /**
          * @brief Swaps the sibling of the node with another node
          * 
          * @param n Node to swap with

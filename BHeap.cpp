@@ -5,6 +5,15 @@
 #include "HeapNode.cpp"
 using namespace std;
 
+/* TODO:
+ * 1. Make sure all linked lists are circular
+ * 2. Update sibling swapping function and logic
+ * 3. Implement consolidate function
+ * 4. Implement merge function
+ * 5. Implement printKey function
+ * 6. Implement extractMin function 
+*/
+
 /**
  * @brief Class that represents a Binomial Heap
  * 
@@ -57,6 +66,7 @@ template <typename KeyType> class BHeap {
          */
         void insert(KeyType k) {
             HeapNode<KeyType> *newNode = new HeapNode<KeyType>(k);
+
             if (rootNode == NULL) {
                 rootNode = newNode;
             } else {
@@ -74,7 +84,25 @@ template <typename KeyType> class BHeap {
          * @return KeyType Minimum key in the heap
          */
         KeyType extractMin() {
-            // IMPLEMENT THIS
+            if (rootNode == NULL) {
+                throw runtime_error("Heap is empty");
+            }
+
+            KeyType minKey = peekKey();
+            HeapNode<KeyType> *minNode = rootNode;
+            minNode->shiftChildrenUp();
+
+            if (minNode->getRightSibling() == minNode && minNode->getDegree() == 0) {
+                rootNode = NULL;
+            } else {
+                rootNode = minNode->getRightSibling();
+                minNode->disconnect();
+                consolidate();
+            }
+
+            size--;
+            delete minNode;
+            return minKey; 
         }
 
         void merge(BHeap<KeyType> &H) {
