@@ -58,6 +58,48 @@ template <typename KeyType> class HeapNode {
         }
 
         /**
+         * @brief Construct a deep copy of the Heap Node
+         * 
+         * @param other Heap Node to copy
+         */
+        HeapNode(const HeapNode<KeyType>& other) {
+            key = other.key;
+            children = other.children;
+            degree = other.degree;
+            isMarked = other.isMarked;
+            leftSibling = other.leftSibling ? new HeapNode<KeyType>(*other.leftSibling) : nullptr;
+            rightSibling = other.rightSibling ? new HeapNode<KeyType>(*other.rightSibling) : nullptr;
+        }
+
+        /**
+         * @brief Copy assignment operator for the Heap Node
+         * 
+         * @param other Heap Node to copy
+         * @return HeapNode<KeyType>& Copy of the Heap Node
+         */
+        HeapNode<KeyType>& operator=(const HeapNode<KeyType>& other) {
+            if (this != &other) {
+                key = other.key;
+                children = other.children;
+                degree = other.degree;
+                isMarked = other.isMarked;
+                delete leftSibling;
+                delete rightSibling;
+                leftSibling = other.leftSibling ? new HeapNode<KeyType>(*other.leftSibling) : nullptr;
+                rightSibling = other.rightSibling ? new HeapNode<KeyType>(*other.rightSibling) : nullptr;
+            }
+            return *this;
+        }
+
+        /**
+         * @brief Destroy the Heap Node object
+         */
+        ~HeapNode() {
+            delete leftSibling;
+            delete rightSibling;
+        }
+
+        /**
          * @brief Get the key of the node
          * 
          * @return KeyType 
