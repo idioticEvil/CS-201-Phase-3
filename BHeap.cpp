@@ -31,7 +31,7 @@ template <typename KeyType> class BHeap {
          * @param s amount of keys to insert
          */
         BHeap(KeyType K[], int s) {
-            size = s;
+            size = 0;
             maxDegree = 0;
             rootNode = NULL;
 
@@ -54,9 +54,8 @@ template <typename KeyType> class BHeap {
          * @brief Inserts a key into the heap's root list
          * 
          * @param k Key to insert
-         * @param constructorCall Used to determine if the size should be incremented
          */
-        void insert(KeyType k, bool constructorCall) {
+        void insert(KeyType k) {
             HeapNode<KeyType> *newNode = new HeapNode<KeyType>(k);
             if (rootNode == NULL) {
                 rootNode = newNode;
@@ -66,7 +65,7 @@ template <typename KeyType> class BHeap {
                     rootNode = newNode;
                 }
             }
-            if (!constructorCall) size++;
+            size++;
         }
 
         /**
