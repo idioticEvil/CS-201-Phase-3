@@ -1,4 +1,3 @@
-// Don't do parent pointers, do a doubly linked list between children in heap level
 #include <iostream>
 #include <cstdlib>
 #include <stdexcept>
@@ -7,11 +6,10 @@ using namespace std;
 
 /* TODO:
  * 1. Make sure all linked lists are circular
- * 2. Update sibling swapping function and logic
+ * 2. Update sibling swapping function and logic, update insertion function
  * 3. Implement consolidate function
  * 4. Implement merge function
  * 5. Implement printKey function
- * 6. Implement extractMin function 
 */
 
 /**
@@ -48,6 +46,22 @@ template <typename KeyType> class BHeap {
             for (int i = 0; i < s; i++) {
                 insert(K[i]);
             }
+
+            // Make sure the linked list is circular
+            if (rootNode != NULL) {
+                HeapNode<KeyType> *rightTraverse = rootNode;
+                HeapNode<KeyType> *leftTraverse = rootNode;
+                
+                while (rightTraverse->getRightSibling() != rootNode) {
+                    rightTraverse = rightTraverse->getRightSibling();
+                }
+                while (leftTraverse->getLeftSibling() != rootNode) {
+                    leftTraverse = leftTraverse->getLeftSibling();
+                }
+
+                rightTraverse->setRightSibling(leftTraverse);
+                leftTraverse->setLeftSibling(rightTraverse);
+            }
         }
 
         /**
@@ -70,7 +84,7 @@ template <typename KeyType> class BHeap {
             if (rootNode == NULL) {
                 rootNode = newNode;
             } else {
-                rootNode->swapSibling(newNode, true);
+                rootNode->swapSibling(newNode, true); // FIXME: I'm not sure if the swapSibling function is correct
                 if (newNode->getKey() < rootNode->getKey()) {
                     rootNode = newNode;
                 }

@@ -69,7 +69,9 @@ template <typename KeyType> class HeapNode {
                 degree = other.degree;
                 isMarked = other.isMarked;
                 delete leftSibling;
+                leftSibling = nullptr;
                 delete rightSibling;
+                rightSibling = nullptr;
                 leftSibling = other.leftSibling ? new HeapNode<KeyType>(*other.leftSibling) : nullptr;
                 rightSibling = other.rightSibling ? new HeapNode<KeyType>(*other.rightSibling) : nullptr;
             }
@@ -81,7 +83,9 @@ template <typename KeyType> class HeapNode {
          */
         ~HeapNode() {
             delete leftSibling;
+            leftSibling = nullptr;
             delete rightSibling;
+            rightSibling = nullptr;
         }
 
         /**
@@ -262,6 +266,9 @@ template <typename KeyType> class HeapNode {
 
             if (children.length() > 1) {
                 n->rightSibling = children[1];
+                children[children.length() - 1]->setRightSibling(children[0]);
+            } else {
+                n->rightSibling = n;
             }
             degree++;
         }
