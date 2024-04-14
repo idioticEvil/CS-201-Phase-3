@@ -3,34 +3,47 @@
 #include <cstdlib>
 #include <stdexcept>
 #include "HeapNode.cpp"
-#include "CircularDynamicArray.h"
 using namespace std;
 
 template <typename KeyType> class BHeap {
     private:
-        CircularDynamicArray<HeapNode<KeyType> *> rootList;
-        HeapNode<KeyType> *minNode;
-        int minIndex;
+        HeapNode<KeyType> *rootNode;
         int size;
         int maxDegree;
     
     public:
+        /**
+         * @brief Construct a new BHeap with a doubly linked root list
+         * 
+         * @param K keys to insert into the heap
+         * @param s amount of keys to insert
+         */
         BHeap(KeyType K[], int s) {
             size = s;
             maxDegree = 0;
-            minIndex = 0;
+            rootNode = NULL;
 
-            rootList = CircularDynamicArray<HeapNode<KeyType> *>(s);
-            minNode = new HeapNode<KeyType>(K[0]);
-            rootList.addFront(minNode);
-
-            
-            for (int i = 1; i < s; i++) {
-                
+            // Insert all keys into the heap
+            for (int i = 0; i < s; i++) {
+                // First insertion into the heap
+                if (rootNode == NULL) {
+                    rootNode = new HeapNode<KeyType>(K[i]);
+                } else {
+                    HeapNode<KeyType> *newNode = new HeapNode<KeyType>(K[i]);
+                    rootNode->swapSibling(newNode, true);
+                    if (newNode->getKey() < rootNode->getKey()) {
+                        rootNode = newNode;
+                    }
+                }
             }
         }
 
+        /**
+         * @brief Construct a new empty BHeap object
+         */
         BHeap() {
-
+            rootNode = NULL;
+            size = 0;
+            maxDegree = 0;
         }
-}
+};

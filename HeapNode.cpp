@@ -15,14 +15,18 @@ template <typename KeyType> class HeapNode {
         CircularDynamicArray<HeapNode<KeyType> *> children;
         HeapNode<KeyType> *leftSibling;
         HeapNode<KeyType> *rightSibling;
+        int degree;
+        bool isMarked;
 
     public:
         /**
          * @brief Construct a new empty Heap Node object
          */
         HeapNode() {
-            leftSibling = NULL;
-            rightSibling = NULL;
+            leftSibling = nullptr;
+            rightSibling = nullptr;
+            degree = 0;
+            isMarked = false;
         }
 
         /**
@@ -32,8 +36,10 @@ template <typename KeyType> class HeapNode {
          */
         HeapNode(KeyType k) {
             key = k;
-            leftSibling = NULL;
-            rightSibling = NULL;
+            leftSibling = nullptr;
+            rightSibling = nullptr;
+            degree = 0;
+            isMarked = false;
         }
 
         /**
@@ -47,6 +53,8 @@ template <typename KeyType> class HeapNode {
             key = k;
             leftSibling = ls;
             rightSibling = rs;
+            degree = 0;
+            isMarked = false;
         }
 
         /**
@@ -86,6 +94,24 @@ template <typename KeyType> class HeapNode {
         }
 
         /**
+         * @brief Get the degree of the node
+         * 
+         * @return int 
+         */
+        int getDegree() {
+            return degree;
+        }
+
+        /**
+         * @brief Get the isMarked property of the node
+         * 
+         * @return bool 
+         */
+        bool getIsMarked() {
+            return isMarked;
+        }
+
+        /**
          * @brief Set the key of the node
          * 
          * @param k Key to be set
@@ -113,11 +139,75 @@ template <typename KeyType> class HeapNode {
         }
 
         /**
-         * @brief Constructs a new child for the node, inserts at correct place
+         * @brief Set the degree of the node
+         * 
+         * @param d Degree to be set
+         */
+        void setDegree(int d) {
+            degree = d;
+        }
+
+        /**
+         * @brief Set the isMarked property of the node
+         * 
+         * @param marked Whether the node is marked or not
+         */
+        void setIsMarked(bool marked) {
+            isMarked = marked;
+        }
+
+        /**
+         * @brief Swaps the sibling of the node with another node
+         * 
+         * @param n Node to swap with
+         * @param swapLeft Whether to swap left or right sibling
+         */
+        void swapSibling(HeapNode<KeyType> *n, bool swapLeft) {
+            if (swapLeft) {
+                HeapNode<KeyType> *temp = leftSibling;
+                if (temp != nullptr) {
+                    temp->rightSibling = n;
+                }
+                if (n != nullptr) {
+                    // If n is a sibling of another node, update the siblings of n 
+                    // and its old sibling
+                    if (n->leftSibling != nullptr) {
+                        n->leftSibling->rightSibling = n->rightSibling;
+                    }
+                    if (n->rightSibling != nullptr) {
+                        n->rightSibling->leftSibling = n->leftSibling;
+                    }
+                    n->rightSibling = this;
+                    n->leftSibling = temp;
+                }
+                leftSibling = n;
+            } else {
+                HeapNode<KeyType> *temp = rightSibling;
+                if (temp != nullptr) {
+                    temp->leftSibling = n;
+                }
+                if (n != nullptr) {
+                    // If n is a sibling of another node, update the siblings of n 
+                    // and its old sibling
+                    if (n->leftSibling != nullptr) {
+                        n->leftSibling->rightSibling = n->rightSibling;
+                    }
+                    if (n->rightSibling != nullptr) {
+                        n->rightSibling->leftSibling = n->leftSibling;
+                    }
+                    n->leftSibling = this;
+                    n->rightSibling = temp;
+                }
+                rightSibling = n;
+            }
+        }
+
+        /**
+         * @brief Insert a new child into the node 
          * 
          * @param k Key of the new child
          */
         void insertChild(KeyType k) {
             // IMPLEMENT THIS
         }
-}
+};
