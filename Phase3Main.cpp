@@ -46,6 +46,5 @@ int main(){
 	H1.printKey();
 	//Should output
 	
-	
 	return 0;
 }

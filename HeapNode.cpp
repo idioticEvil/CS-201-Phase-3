@@ -43,21 +43,6 @@ template <typename KeyType> class HeapNode {
         }
 
         /**
-         * @brief Construct a new Heap Node object with a key and left & right siblings
-         * 
-         * @param k Key of the Heap Node
-         * @param ls Left Sibling of the Heap Node
-         * @param rs Right Sibling of the Heap Node
-         */
-        HeapNode(KeyType k, HeapNode<KeyType> *ls, HeapNode<KeyType> *rs) {
-            key = k;
-            leftSibling = ls;
-            rightSibling = rs;
-            degree = 0;
-            isMarked = false;
-        }
-
-        /**
          * @brief Construct a deep copy of the Heap Node
          * 
          * @param other Heap Node to copy
@@ -245,11 +230,16 @@ template <typename KeyType> class HeapNode {
         }
 
         /**
-         * @brief Insert a new child into the node 
+         * @brief Adds a child to the node
          * 
-         * @param k Key of the new child
+         * @param n Child to add
          */
-        void insertChild(KeyType k) {
-            // IMPLEMENT THIS
+        void addChild(HeapNode<KeyType> *n) {
+            children.addFront(n);
+
+            if (children.length() > 1) {
+                n->rightSibling = children[1];
+            }
+            degree++;
         }
 };
