@@ -5,9 +5,9 @@
 using namespace std;
 
 /**
- * @brief Class that represents a node in the Binomial Heap
+ * @brief Class that represents a node in a Binomial Heap
  * 
- * @tparam KeyType Type of the key of the Heap Node
+ * @tparam KeyType Type of the key of the node
  */
 template <typename KeyType> class HeapNode {
     private:
@@ -16,7 +16,6 @@ template <typename KeyType> class HeapNode {
         HeapNode<KeyType> *leftSibling;
         HeapNode<KeyType> *rightSibling;
         int degree;
-        bool isMarked;
 
     public:
         /**
@@ -26,48 +25,44 @@ template <typename KeyType> class HeapNode {
             leftSibling = nullptr;
             rightSibling = nullptr;
             degree = 0;
-            isMarked = false;
         }
 
         /**
          * @brief Construct a new Heap Node object with a key
          * 
-         * @param k Key of the Heap Node
+         * @param k Key of the node
          */
         HeapNode(KeyType k) {
             key = k;
             leftSibling = nullptr;
             rightSibling = nullptr;
             degree = 0;
-            isMarked = false;
         }
 
         /**
-         * @brief Construct a deep copy of the Heap Node
+         * @brief Construct a new Heap Node object from another Heap Node object
          * 
-         * @param other Heap Node to copy
+         * @param other Heap Node object to copy
          */
         HeapNode(const HeapNode<KeyType>& other) {
             key = other.key;
             children = other.children;
             degree = other.degree;
-            isMarked = other.isMarked;
             leftSibling = other.leftSibling ? new HeapNode<KeyType>(*other.leftSibling) : nullptr;
             rightSibling = other.rightSibling ? new HeapNode<KeyType>(*other.rightSibling) : nullptr;
         }
 
         /**
-         * @brief Copy assignment operator for the Heap Node
+         * @brief Assignment operator for Heap Node objects
          * 
-         * @param other Heap Node to copy
-         * @return HeapNode<KeyType>& Copy of the Heap Node
+         * @param other Heap Node object to copy
+         * @return HeapNode<KeyType>& Reference to the new Heap Node object
          */
         HeapNode<KeyType>& operator=(const HeapNode<KeyType>& other) {
             if (this != &other) {
                 key = other.key;
                 children = other.children;
                 degree = other.degree;
-                isMarked = other.isMarked;
                 delete leftSibling;
                 leftSibling = nullptr;
                 delete rightSibling;
@@ -91,112 +86,102 @@ template <typename KeyType> class HeapNode {
         /**
          * @brief Get the key of the node
          * 
-         * @return KeyType 
+         * @return KeyType Key of the node
          */
         KeyType getKey() {
             return key;
         }
 
         /**
-         * @brief Get the left sibling of the node
+         * @brief Get the Left Sibling object
          * 
-         * @return HeapNode<KeyType>* 
+         * @return HeapNode<KeyType>* Pointer to the left sibling
          */
         HeapNode<KeyType> *getLeftSibling() {
             return leftSibling;
         }
 
         /**
-         * @brief Get the right sibling of the node
+         * @brief Get the Right Sibling of the node
          * 
-         * @return HeapNode<KeyType>* 
+         * @return HeapNode<KeyType>* Pointer to the right sibling
          */
         HeapNode<KeyType> *getRightSibling() {
             return rightSibling;
         }
 
         /**
-         * @brief Get the children of the node
+         * @brief Get the Children of the node
          * 
-         * @return CircularDynamicArray<HeapNode<KeyType>*> 
+         * @return CircularDynamicArray<HeapNode<KeyType> *> Children of the node
          */
         CircularDynamicArray<HeapNode<KeyType> *> getChildren() {
             return children;
         }
 
         /**
-         * @brief Get the degree of the node
+         * @brief Get the Degree of the node
          * 
-         * @return int 
+         * @return int Degree of the node
          */
         int getDegree() {
             return degree;
         }
 
         /**
-         * @brief Get the isMarked property of the node
-         * 
-         * @return bool 
-         */
-        bool getIsMarked() {
-            return isMarked;
-        }
-
-        /**
          * @brief Set the key of the node
          * 
-         * @param k Key to be set
+         * @param k New key
          */
         void setKey(KeyType k) {
             key = k;
         }
 
         /**
-         * @brief Set the left sibling of the node
+         * @brief Set the Left Sibling object
          * 
-         * @param ls New left sibling
+         * @param ls The new left sibling
          */
         void setLeftSibling(HeapNode<KeyType> *ls) {
             leftSibling = ls;
+
+            if (ls != nullptr) {
+                ls->rightSibling = this;
+            }
         }
 
         /**
-         * @brief Set the right sibling of the node
+         * @brief Set the Right Sibling object
          * 
-         * @param rs New right sibling
+         * @param rs The new right sibling
          */
-        void setRightSibling(HeapNode<KeyType> *rs) {
-            rightSibling = rs;
+        void setRightSibling(HeapNode<KeyType>* sibling) {
+            rightSibling = sibling;
+
+            if (sibling != nullptr) {
+                sibling->leftSibling = this;
+            }
         }
 
         /**
-         * @brief Set the degree of the node
+         * @brief Set the Degree object
          * 
-         * @param d Degree to be set
+         * @param d The new degree
          */
         void setDegree(int d) {
             degree = d;
         }
 
         /**
-         * @brief Set the isMarked property of the node
-         * 
-         * @param marked Whether the node is marked or not
-         */
-        void setIsMarked(bool marked) {
-            isMarked = marked;
-        }
-
-        /**
-         * @brief Moves children of a node up to the root list
+         * @brief Shifts the children of the node up one level
          */
         void shiftChildrenUp() {
-            if (degree > 0) { // If the node has children
+            if (degree > 0) {
                 children.getFrontValue()->setLeftSibling(leftSibling);
                 leftSibling->setRightSibling(children.getFrontValue());
                 children.getEndValue()->setRightSibling(rightSibling);
                 rightSibling->setLeftSibling(children.getEndValue());
-            } else { // If the node has no children
+            } else {
                 leftSibling->setRightSibling(rightSibling);
                 rightSibling->setLeftSibling(leftSibling);
             }
@@ -206,6 +191,14 @@ template <typename KeyType> class HeapNode {
          * @brief Disconnects the node from its siblings
          */
         void disconnect() {
+            if (leftSibling != nullptr) {
+                leftSibling->rightSibling = rightSibling;
+            }
+
+            if (rightSibling != nullptr) {
+                rightSibling->leftSibling = leftSibling;
+            }
+
             leftSibling = nullptr;
             rightSibling = nullptr;
         }
@@ -214,7 +207,7 @@ template <typename KeyType> class HeapNode {
          * @brief Swaps the sibling of the node with another node
          * 
          * @param n Node to swap with
-         * @param swapLeft Whether to swap left or right sibling
+         * @param swapLeft Whether to swap the left sibling or not
          */
         void swapSibling(HeapNode<KeyType> *n, bool swapLeft) {
             if (swapLeft) {
@@ -223,8 +216,6 @@ template <typename KeyType> class HeapNode {
                     temp->rightSibling = n;
                 }
                 if (n != nullptr) {
-                    // If n is a sibling of another node, update the siblings of n 
-                    // and its old sibling
                     if (n->leftSibling != nullptr) {
                         n->leftSibling->rightSibling = n->rightSibling;
                     }
@@ -241,8 +232,6 @@ template <typename KeyType> class HeapNode {
                     temp->leftSibling = n;
                 }
                 if (n != nullptr) {
-                    // If n is a sibling of another node, update the siblings of n 
-                    // and its old sibling
                     if (n->leftSibling != nullptr) {
                         n->leftSibling->rightSibling = n->rightSibling;
                     }
@@ -262,6 +251,7 @@ template <typename KeyType> class HeapNode {
          * @param n Child to add
          */
         void addChild(HeapNode<KeyType> *n) {
+            n->disconnect();
             children.addFront(n);
 
             if (children.length() > 1) {
