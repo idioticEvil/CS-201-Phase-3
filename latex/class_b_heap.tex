@@ -1,0 +1,169 @@
+\doxysection{BHeap\texorpdfstring{$<$}{<} Key\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_b_heap}{}\label{class_b_heap}\index{BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}}
+
+
+Class that represents a Binomial Heap.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_heap_a57f71659af41d1f3bbce959885352597}{BHeap}} (\mbox{\hyperlink{class_heap_node}{Key\+Type}} \mbox{\hyperlink{class_heap_node}{K}}\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{class_heap_node}{int}} \mbox{\hyperlink{class_heap_node}{s}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_b_heap}{BHeap} with a doubly linked root list. \end{DoxyCompactList}\item 
+\Hypertarget{class_b_heap_ad6c51cd518449e6a57aedd6862dd300e}\label{class_b_heap_ad6c51cd518449e6a57aedd6862dd300e} 
+{\bfseries BHeap} ()
+\begin{DoxyCompactList}\small\item\em Construct a new empty \doxylink{class_b_heap}{BHeap} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_b_heap_a86aa5b395f4642d83f3ce02e14fc4e10}{insert}} (\mbox{\hyperlink{class_heap_node}{Key\+Type}} \mbox{\hyperlink{class_heap_node}{k}})
+\begin{DoxyCompactList}\small\item\em Inserts a key into the heap\textquotesingle{}s root list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_heap_node}{Key\+Type}} \mbox{\hyperlink{class_b_heap_a4ede7d6b71f641cd419e721458a76512}{extract\+Min}} ()
+\begin{DoxyCompactList}\small\item\em Extracts the minimum key from the heap and consolidates the heap. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_b_heap_a514214b33819bc9925e8500ebb3810b3}{merge}} (\mbox{\hyperlink{class_b_heap}{BHeap}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \&\mbox{\hyperlink{class_heap_node}{H}})
+\begin{DoxyCompactList}\small\item\em Merges two binomial heaps and deletes the other heap. \end{DoxyCompactList}\item 
+\Hypertarget{class_b_heap_a974582ad6e1f371ed6bb9081c042f82d}\label{class_b_heap_a974582ad6e1f371ed6bb9081c042f82d} 
+\mbox{\hyperlink{class_heap_node}{void}} {\bfseries print\+Key} ()
+\begin{DoxyCompactList}\small\item\em Prints the keys in the heap in a modified preorder traversal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_b_heap_a5744a9f575ab337ef03b3c234be632a1}{print\+Key\+Helper}} (\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_heap_node}{node}})
+\begin{DoxyCompactList}\small\item\em Helper function to print the keys of the heap. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_heap_node}{Key\+Type}} \mbox{\hyperlink{class_b_heap_a46aba493ddbe0d9ceb7057dfc0cd1c1d}{peek\+Key}} ()
+\begin{DoxyCompactList}\small\item\em Returns the minimum key in the heap. \end{DoxyCompactList}\item 
+\Hypertarget{class_b_heap_a70a9432329e890d1f80cd48d196798af}\label{class_b_heap_a70a9432329e890d1f80cd48d196798af} 
+\mbox{\hyperlink{class_heap_node}{void}} {\bfseries print\+Root\+List} ()
+\begin{DoxyCompactList}\small\item\em Testing function that prints the keys in the root list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_b_heap_ae6e39f507370cb63d7e4a0eeed29056d}{print\+Node\+List}} (\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_heap_node}{node}})
+\begin{DoxyCompactList}\small\item\em Testing function that prints the keys in any list, children or root list. \end{DoxyCompactList}\item 
+\Hypertarget{class_b_heap_ad4e6d675521850ba55c07bccaf2eb70b}\label{class_b_heap_ad4e6d675521850ba55c07bccaf2eb70b} 
+\mbox{\hyperlink{class_heap_node}{void}} {\bfseries ensure\+Linked\+Circularity} ()
+\begin{DoxyCompactList}\small\item\em Testing function that ensures the root list is circular. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}}$>$\newline
+class BHeap$<$ Key\+Type $>$}
+Class that represents a Binomial Heap. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Key\+Type} & Type of the key of the Binomial Heap \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_b_heap_a57f71659af41d1f3bbce959885352597}\label{class_b_heap_a57f71659af41d1f3bbce959885352597} 
+\index{BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}!BHeap@{BHeap}}
+\index{BHeap@{BHeap}!BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}}
+\doxysubsubsection{\texorpdfstring{BHeap()}{BHeap()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \\
+\mbox{\hyperlink{class_b_heap}{BHeap}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\mbox{\hyperlink{class_b_heap}{\+::\+BHeap}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_heap_node}{Key\+Type}}}]{K\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{class_heap_node}{int}}}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_b_heap}{BHeap} with a doubly linked root list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em K} & keys to insert into the heap \\
+\hline
+{\em s} & amount of keys to insert \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_b_heap_a4ede7d6b71f641cd419e721458a76512}\label{class_b_heap_a4ede7d6b71f641cd419e721458a76512} 
+\index{BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}!extractMin@{extractMin}}
+\index{extractMin@{extractMin}!BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}}
+\doxysubsubsection{\texorpdfstring{extractMin()}{extractMin()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \\
+\mbox{\hyperlink{class_heap_node}{Key\+Type}} \mbox{\hyperlink{class_b_heap}{BHeap}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\+::extract\+Min (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Extracts the minimum key from the heap and consolidates the heap. 
+
+\begin{DoxyReturn}{Returns}
+Key\+Type Minimum key in the heap 
+\end{DoxyReturn}
+\Hypertarget{class_b_heap_a86aa5b395f4642d83f3ce02e14fc4e10}\label{class_b_heap_a86aa5b395f4642d83f3ce02e14fc4e10} 
+\index{BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}!insert@{insert}}
+\index{insert@{insert}!BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \\
+\mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_b_heap}{BHeap}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\+::insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_heap_node}{Key\+Type}}}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts a key into the heap\textquotesingle{}s root list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & Key to insert \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_b_heap_a514214b33819bc9925e8500ebb3810b3}\label{class_b_heap_a514214b33819bc9925e8500ebb3810b3} 
+\index{BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}!merge@{merge}}
+\index{merge@{merge}!BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}}
+\doxysubsubsection{\texorpdfstring{merge()}{merge()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \\
+\mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_b_heap}{BHeap}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\+::merge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_heap}{BHeap}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \&}]{H }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Merges two binomial heaps and deletes the other heap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em H} & Binomial heap to merge with \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_b_heap_a46aba493ddbe0d9ceb7057dfc0cd1c1d}\label{class_b_heap_a46aba493ddbe0d9ceb7057dfc0cd1c1d} 
+\index{BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}!peekKey@{peekKey}}
+\index{peekKey@{peekKey}!BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}}
+\doxysubsubsection{\texorpdfstring{peekKey()}{peekKey()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \\
+\mbox{\hyperlink{class_heap_node}{Key\+Type}} \mbox{\hyperlink{class_b_heap}{BHeap}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\+::peek\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the minimum key in the heap. 
+
+\begin{DoxyReturn}{Returns}
+Key\+Type Minimum key in the heap 
+\end{DoxyReturn}
+\Hypertarget{class_b_heap_a5744a9f575ab337ef03b3c234be632a1}\label{class_b_heap_a5744a9f575ab337ef03b3c234be632a1} 
+\index{BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}!printKeyHelper@{printKeyHelper}}
+\index{printKeyHelper@{printKeyHelper}!BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}}
+\doxysubsubsection{\texorpdfstring{printKeyHelper()}{printKeyHelper()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \\
+\mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_b_heap}{BHeap}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\+::print\+Key\+Helper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Helper function to print the keys of the heap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Node to start printing from \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_b_heap_ae6e39f507370cb63d7e4a0eeed29056d}\label{class_b_heap_ae6e39f507370cb63d7e4a0eeed29056d} 
+\index{BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}!printNodeList@{printNodeList}}
+\index{printNodeList@{printNodeList}!BHeap$<$ KeyType $>$@{BHeap$<$ KeyType $>$}}
+\doxysubsubsection{\texorpdfstring{printNodeList()}{printNodeList()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \\
+\mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_b_heap}{BHeap}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\+::print\+Node\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Testing function that prints the keys in any list, children or root list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+BHeap.\+cpp\end{DoxyCompactItemize}

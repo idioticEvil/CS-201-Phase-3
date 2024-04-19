@@ -1,0 +1,254 @@
+\doxysection{BHeap.\+cpp}
+\hypertarget{_b_heap_8cpp_source}{}\label{_b_heap_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CircularDynamicArray.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}HeapNode.cpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{/*\ TODO:}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ 1.\ Merge\ needs\ to\ be\ implemented}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ 2.\ Print\ key\ is\ also\ giving\ me\ the\ wrong\ order\ of\ node\ elements,\ either\ that\ is\ something}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ \ \ \ wrong\ with\ printKey\ or\ the\ consolidate\ function}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ 3.\ I\ need\ to\ make\ more\ test\ cases}}
+\DoxyCodeLine{00014\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ KeyType>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_b_heap}{BHeap}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *rootNode;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ maxDegree;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Consolidate\ is\ supposed\ to\ start\ with\ the\ smallest\ rank\ child\ of\ the\ extracted\ node}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ consolidate()\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ an\ array\ to\ store\ the\ roots\ of\ the\ trees\ according\ to\ their\ degree}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_circular_dynamic_array}{CircularDynamicArray<HeapNode<KeyType>}}\ *>\ degreeArray(log2(size)\ +\ 1);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *currentNode\ =\ rootNode;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Traverse\ the\ root\ list\ and\ merge\ trees\ of\ the\ same\ degree}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentDegree\ =\ currentNode-\/>\mbox{\hyperlink{class_heap_node_a72bd008b0470fc33411bdf4d0203d8fa}{getDegree}}();}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Current\ Node:\ "{}}\ <<\ currentNode-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <<\ endl;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Current\ Degree:\ "{}}\ <<\ currentDegree\ <<\ endl;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (degreeArray[currentDegree]\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *otherNode\ =\ degreeArray[currentDegree];}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentNode-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ >\ otherNode-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}())\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *temp\ =\ currentNode;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentNode\ =\ otherNode;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ otherNode\ =\ temp;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentNode-\/>\mbox{\hyperlink{class_heap_node_ae00d6e90dd3ca9dc82a601f8a84beb8d}{addChild}}(otherNode);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ degreeArray[currentDegree]\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentDegree++;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Linked\ Nodes\ with\ keys\ "{}}\ <<\ currentNode-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <<\ \textcolor{stringliteral}{"{}\ and\ "{}}\ <<\ otherNode-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <<\ endl;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_b_heap_a70a9432329e890d1f80cd48d196798af}{printRootList}}();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ degreeArray[currentDegree]\ =\ currentNode;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentNode\ =\ currentNode-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}();}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (currentNode\ !=\ rootNode);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Root\ Node:\ "{}}\ <<\ rootNode-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <<\ endl;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ the\ minimum\ key\ in\ the\ heap}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}*\ first\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}*\ last\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ rootNode\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Traverse\ the\ degree\ array\ and\ create\ a\ new\ root\ list}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ degreeArray.\mbox{\hyperlink{class_circular_dynamic_array_ad85b368c47b489bd2ab61e5b93718042}{length}}();\ i++)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (degreeArray[i]\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rootNode\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode\ =\ degreeArray[i];}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\ =\ rootNode;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last\ =\ rootNode;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(rootNode);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(rootNode);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(degreeArray[i]);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ degreeArray[i]-\/>setLeftSibling(last);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last\ =\ degreeArray[i];}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(first);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(last);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ current\ node\ has\ a\ smaller\ key}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (degreeArray[i]-\/>getKey()\ <\ rootNode-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}())\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode\ =\ degreeArray[i];}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ensure\ the\ list\ is\ circular}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (last\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ first\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(first);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(last);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Root\ Node:\ "{}}\ <<\ rootNode-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <<\ endl;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_b_heap_ae6e39f507370cb63d7e4a0eeed29056d}{printNodeList}}(rootNode-\/>\mbox{\hyperlink{class_heap_node_ad0bd603ad2f73ed5c9ce956e7478d54f}{getChildren}}().\mbox{\hyperlink{class_circular_dynamic_array_ac6f5bc5d4f1589bec8b1d4dcc6206ada}{getFrontValue}}());}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_b_heap_a57f71659af41d1f3bbce959885352597}{BHeap}}(KeyType\ K[],\ \textcolor{keywordtype}{int}\ s)\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ size\ =\ 0;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ maxDegree\ =\ 0;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ rootNode\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Insert\ all\ keys\ into\ the\ heap}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ s;\ i++)\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_b_heap_a86aa5b395f4642d83f3ce02e14fc4e10}{insert}}(K[i]);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Finished\ inserting\ keys"{}}\ <<\ endl;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Root\ Node:\ "{}}\ <<\ rootNode-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <<\ endl;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_b_heap_a70a9432329e890d1f80cd48d196798af}{printRootList}}();}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_b_heap_ad6c51cd518449e6a57aedd6862dd300e}{BHeap}}()\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ rootNode\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ size\ =\ 0;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ maxDegree\ =\ 0;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_heap_a86aa5b395f4642d83f3ce02e14fc4e10}{insert}}(KeyType\ k)\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *newNode\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}(\mbox{\hyperlink{class_heap_node}{k}});}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \textcolor{stringliteral}{"{}Inserting\ "{}}\ <<\ \mbox{\hyperlink{class_heap_node}{k}}\ <<\ \mbox{\hyperlink{class_heap_node}{endl}};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rootNode\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \textcolor{stringliteral}{"{}Root\ Node\ is\ null,\ setting\ new\ node\ as\ root"{}}\ <<\ \mbox{\hyperlink{class_heap_node}{endl}};}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode\ =\ \mbox{\hyperlink{class_heap_node}{newNode}};}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(rootNode);}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(rootNode);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Insert\ new\ node\ next\ to\ rootNode}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rootNode-\/>\mbox{\hyperlink{class_heap_node_a5685102ce70079848be7757cb3cfc8c6}{getLeftSibling}}()\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode-\/>\mbox{\hyperlink{class_heap_node_a5685102ce70079848be7757cb3cfc8c6}{getLeftSibling}}()-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(\mbox{\hyperlink{class_heap_node}{newNode}});}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{newNode}}-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(rootNode-\/>\mbox{\hyperlink{class_heap_node_a5685102ce70079848be7757cb3cfc8c6}{getLeftSibling}}());}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{newNode}}-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(rootNode);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(\mbox{\hyperlink{class_heap_node}{newNode}});}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ rootNode\ if\ necessary}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{newNode}}-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <\ rootNode-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}())\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode\ =\ \mbox{\hyperlink{class_heap_node}{newNode}};}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ size++;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{KeyType}}\ \mbox{\hyperlink{class_b_heap_a4ede7d6b71f641cd419e721458a76512}{extractMin}}()\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rootNode\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{class_heap_node}{runtime\_error}}(\textcolor{stringliteral}{"{}Heap\ is\ empty"{}});}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{KeyType}}\ \mbox{\hyperlink{class_heap_node}{minKey}}\ =\ \mbox{\hyperlink{class_b_heap_a46aba493ddbe0d9ceb7057dfc0cd1c1d}{peekKey}}();}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{minNode}}\ =\ rootNode;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{minNode}}-\/>\mbox{\hyperlink{class_heap_node_ab5d80ad2ae3b0994113d17237d32e069}{shiftChildrenUp}}();}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{minNode}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}()\ ==\ \mbox{\hyperlink{class_heap_node}{minNode}}\ \&\&\ \mbox{\hyperlink{class_heap_node}{minNode}}-\/>\mbox{\hyperlink{class_heap_node_a72bd008b0470fc33411bdf4d0203d8fa}{getDegree}}()\ ==\ 0)\ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rootNode\ =\ \mbox{\hyperlink{class_heap_node}{minNode}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}();}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{minNode}}-\/>\mbox{\hyperlink{class_heap_node_a7532fafe2a647c1cfef5e7afe853ad5e}{disconnect}}();}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ consolidate();}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ size-\/-\/;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{class_heap_node}{minNode}};}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_heap_node}{minKey}};\ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_heap_a514214b33819bc9925e8500ebb3810b3}{merge}}(\mbox{\hyperlink{class_heap_node}{BHeap<KeyType>}}\ \&\mbox{\hyperlink{class_heap_node}{H}})\ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ IMPLEMENT\ THIS}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_heap_a974582ad6e1f371ed6bb9081c042f82d}{printKey}}()\ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rootNode\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{currentNode}}\ =\ rootNode;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \textcolor{stringliteral}{"{}B"{}}\ <<\ \mbox{\hyperlink{class_heap_node}{currentNode}}-\/>\mbox{\hyperlink{class_heap_node_a72bd008b0470fc33411bdf4d0203d8fa}{getDegree}}()\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ \mbox{\hyperlink{class_heap_node}{endl}};}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_b_heap_a5744a9f575ab337ef03b3c234be632a1}{printKeyHelper}}(\mbox{\hyperlink{class_heap_node}{currentNode}});}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{currentNode}}\ =\ \mbox{\hyperlink{class_heap_node}{currentNode}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}();}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{class_heap_node}{currentNode}}\ !=\ rootNode);}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_heap_a5744a9f575ab337ef03b3c234be632a1}{printKeyHelper}}(\mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{node}})\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{node}}\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ the\ key\ of\ the\ current\ node}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \mbox{\hyperlink{class_heap_node}{node}}-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Recursively\ print\ the\ keys\ of\ the\ children\ of\ the\ current\ node}}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{child}}\ =\ \mbox{\hyperlink{class_heap_node}{node}}-\/>\mbox{\hyperlink{class_heap_node_ad0bd603ad2f73ed5c9ce956e7478d54f}{getChildren}}().\mbox{\hyperlink{class_circular_dynamic_array_ac6f5bc5d4f1589bec8b1d4dcc6206ada}{getFrontValue}}();}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{child}}\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{currentChild}}\ =\ \mbox{\hyperlink{class_heap_node}{child}};}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_b_heap_a5744a9f575ab337ef03b3c234be632a1}{printKeyHelper}}(\mbox{\hyperlink{class_heap_node}{currentChild}});}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{currentChild}}\ =\ \mbox{\hyperlink{class_heap_node}{currentChild}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}();}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{class_heap_node}{currentChild}}\ !=\ \mbox{\hyperlink{class_heap_node}{child}});}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{KeyType}}\ \mbox{\hyperlink{class_b_heap_a46aba493ddbe0d9ceb7057dfc0cd1c1d}{peekKey}}()\ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rootNode\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{class_heap_node}{runtime\_error}}(\textcolor{stringliteral}{"{}Heap\ is\ empty"{}});}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rootNode-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}();}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_heap_a70a9432329e890d1f80cd48d196798af}{printRootList}}()\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \textcolor{stringliteral}{"{}Testing\ printRootList\ function"{}}\ <<\ \mbox{\hyperlink{class_heap_node}{endl}};}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rootNode\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \textcolor{stringliteral}{"{}Root\ Node\ is\ null"{}}\ <<\ \mbox{\hyperlink{class_heap_node}{endl}};}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rootNode-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}()\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \textcolor{stringliteral}{"{}We\ have\ a\ problem"{}}\ <<\ \mbox{\hyperlink{class_heap_node}{endl}};}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{currentNode}}\ =\ rootNode;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \textcolor{stringliteral}{"{}Root\ List:\ "{}};}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{class_heap_node}{currentNode}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}()\ !=\ rootNode)\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \mbox{\hyperlink{class_heap_node}{currentNode}}-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{currentNode}}\ =\ \mbox{\hyperlink{class_heap_node}{currentNode}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}();}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \mbox{\hyperlink{class_heap_node}{currentNode}}-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <<\ \mbox{\hyperlink{class_heap_node}{endl}};}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_heap_ae6e39f507370cb63d7e4a0eeed29056d}{printNodeList}}(\mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{node}})\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{currentNode}}\ =\ \mbox{\hyperlink{class_heap_node}{node}};}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{class_heap_node}{currentNode}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}()\ !=\ \mbox{\hyperlink{class_heap_node}{node}})\ \{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \mbox{\hyperlink{class_heap_node}{currentNode}}-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{currentNode}}\ =\ \mbox{\hyperlink{class_heap_node}{currentNode}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}();}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \mbox{\hyperlink{class_heap_node}{currentNode}}-\/>\mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ <<\ \mbox{\hyperlink{class_heap_node}{endl}};}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_heap_ad4e6d675521850ba55c07bccaf2eb70b}{ensureLinkedCircularity}}()\ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rootNode\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{traverseNode}}\ =\ rootNode;}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{class_heap_node}{traverseNode}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}()\ !=\ rootNode)\ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{traverseNode}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}()\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \textcolor{stringliteral}{"{}We\ have\ a\ problem"{}}\ <<\ \mbox{\hyperlink{class_heap_node}{endl}};}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{traverseNode}}\ =\ \mbox{\hyperlink{class_heap_node}{traverseNode}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}();}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \mbox{\hyperlink{class_heap_node}{cout}}\ <<\ \textcolor{stringliteral}{"{}Root\ Node\ is\ null"{}}\ <<\ \mbox{\hyperlink{class_heap_node}{endl}};}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00305\ \};}
+
+\end{DoxyCode}

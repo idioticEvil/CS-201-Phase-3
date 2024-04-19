@@ -285,6 +285,9 @@ template <typename KeyType> class BHeap {
             cout << currentNode->getKey() << endl;
         }
 
+        /**
+         * @brief Testing function that ensures the root list is circular
+         */
         void ensureLinkedCircularity() {
             if (rootNode != nullptr) {
                 HeapNode<KeyType> *traverseNode = rootNode;
@@ -294,7 +297,7 @@ template <typename KeyType> class BHeap {
                         cout << "We have a problem" << endl;
                         return;
                     }
-                    
+
                     traverseNode = traverseNode->getRightSibling();
                 }
             } else cout << "Root Node is null" << endl;
