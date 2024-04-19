@@ -60,8 +60,9 @@ template <typename T> class CircularDynamicArray {
             isSorted = src.isSorted;
             
             for (int i = 0; i < size; i++) {
-                data[front + i] = src.data[(src.front + i) % src.cap];
+                data[(front + i) % cap] = src.data[(src.front + i) % src.cap];
             }
+
         }
 
         /**

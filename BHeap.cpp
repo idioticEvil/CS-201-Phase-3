@@ -7,13 +7,10 @@
 using namespace std;
 
 /* TODO:
- * 1. The test with randomized numbers as keys is seg faulting, I isolated the code but I
-      don't know what is causing it
- * 2. Merge needs to be implemented
- * 3. Print key needs to have its formatting fixed
- * 4. Print key is also giving me the wrong order of node elements, either that is something
+ * 1. Merge needs to be implemented
+ * 2. Print key is also giving me the wrong order of node elements, either that is something
  *    wrong with printKey or the consolidate function
- * 5. I need to make more test cases
+ * 3. I need to make more test cases
 */
 
 /**
@@ -37,7 +34,7 @@ template <typename KeyType> class BHeap {
             HeapNode<KeyType> *currentNode = rootNode;
 
             // Traverse the root list and merge trees of the same degree
-            while (currentNode->getRightSibling() != rootNode) {
+            do {
                 int currentDegree = currentNode->getDegree();
                 cout << "Current Node: " << currentNode->getKey() << endl;
                 cout << "Current Degree: " << currentDegree << endl;
@@ -53,35 +50,50 @@ template <typename KeyType> class BHeap {
                     degreeArray[currentDegree] = nullptr;
                     currentDegree++;
                     cout << "Linked Nodes with keys " << currentNode->getKey() << " and " << otherNode->getKey() << endl;
-                    printRootList(); // seg fault
+                    printRootList();
                 }
                 degreeArray[currentDegree] = currentNode;
                 currentNode = currentNode->getRightSibling();
-            }
+            } while (currentNode != rootNode);
+
+            cout << "Root Node: " << rootNode->getKey() << endl;
 
             // Find the minimum key in the heap
             HeapNode<KeyType>* first = nullptr;
             HeapNode<KeyType>* last = nullptr;
             rootNode = nullptr;
 
+            // Traverse the degree array and create a new root list
             for (int i = 0; i < degreeArray.length(); i++) {
                 if (degreeArray[i] != nullptr) {
                     if (rootNode == nullptr) {
                         rootNode = degreeArray[i];
                         first = rootNode;
                         last = rootNode;
+                        rootNode->setLeftSibling(rootNode);
+                        rootNode->setRightSibling(rootNode);
                     } else {
                         last->setRightSibling(degreeArray[i]);
                         degreeArray[i]->setLeftSibling(last);
                         last = degreeArray[i];
+                        last->setRightSibling(first);
+                        first->setLeftSibling(last);
+                    }
+
+                    // Check if the current node has a smaller key
+                    if (degreeArray[i]->getKey() < rootNode->getKey()) {
+                        rootNode = degreeArray[i];
                     }
                 }
             }
 
+            // Ensure the list is circular
             if (last != nullptr && first != nullptr) {
                 last->setRightSibling(first);
                 first->setLeftSibling(last);
             }
+
+            cout << "Root Node: " << rootNode->getKey() << endl;
             printNodeList(rootNode->getChildren().getFrontValue());
         }
 
@@ -103,27 +115,6 @@ template <typename KeyType> class BHeap {
             }
 
             cout << "Finished inserting keys" << endl;
-            /*
-            // Make sure the linked list is circular
-            if (rootNode != nullptr) {
-                HeapNode<KeyType> *rightTraverse = rootNode;
-                HeapNode<KeyType> *leftTraverse = rootNode;
-                
-                while (rightTraverse->getRightSibling() != nullptr) {
-                    //cout << "Traversing to right sibling with key " << rightTraverse->getRightSibling()->getKey() << endl;
-                    rightTraverse = rightTraverse->getRightSibling();
-                }
-                while (leftTraverse->getLeftSibling() != nullptr) {
-                    //cout << "Traversing to left sibling with key " << leftTraverse->getLeftSibling()->getKey() << endl;
-                    leftTraverse = leftTraverse->getLeftSibling();
-                }
-
-                rightTraverse->setRightSibling(leftTraverse);
-                leftTraverse->setLeftSibling(rightTraverse);
-                cout << rightTraverse->getRightSibling()->getKey() << endl;
-                cout << leftTraverse->getLeftSibling()->getKey() << endl;
-            }
-            cout << "Finished making linked list circular" << endl;*/
             cout << "Root Node: " << rootNode->getKey() << endl;
             printRootList();
         }
@@ -195,10 +186,14 @@ template <typename KeyType> class BHeap {
             return minKey; 
         }
 
+        /**
+         * @brief Merges two binomial heaps and deletes the other heap
+         * 
+         * @param H Binomial heap to merge with
+         */
         void merge(BHeap<KeyType> &H) {
             // IMPLEMENT THIS
         }
-
 
         /**
          * @brief Prints the keys in the heap in a modified preorder traversal
@@ -210,7 +205,7 @@ template <typename KeyType> class BHeap {
 
             HeapNode<KeyType> *currentNode = rootNode;
             do {
-                cout << "B" << currentNode->getDegree() << ": ";
+                cout << "B" << currentNode->getDegree() << ": " << endl;
                 printKeyHelper(currentNode);
                 cout << "\n";
                 currentNode = currentNode->getRightSibling();
@@ -223,9 +218,7 @@ template <typename KeyType> class BHeap {
          * @param node Node to start printing from
          */
         void printKeyHelper(HeapNode<KeyType> *node) {
-            if (node == nullptr) {
-                return;
-            }
+            if (node == nullptr) return;
 
             // Print the key of the current node
             cout << node->getKey() << " ";
@@ -288,6 +281,7 @@ template <typename KeyType> class BHeap {
                 cout << currentNode->getKey() << " ";
                 currentNode = currentNode->getRightSibling();
             }
+
             cout << currentNode->getKey() << endl;
         }
 
@@ -300,7 +294,7 @@ template <typename KeyType> class BHeap {
                         cout << "We have a problem" << endl;
                         return;
                     }
-
+                    
                     traverseNode = traverseNode->getRightSibling();
                 }
             } else cout << "Root Node is null" << endl;

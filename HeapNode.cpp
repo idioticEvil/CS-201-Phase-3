@@ -204,64 +204,28 @@ template <typename KeyType> class HeapNode {
             leftSibling = nullptr;
             rightSibling = nullptr;
         }
-
-        /**
-         * @brief Swaps the sibling of the node with another node
-         * 
-         * @param n Node to swap with
-         * @param swapLeft Whether to swap the left sibling or not
-         */
-        void swapSibling(HeapNode<KeyType> *n, bool swapLeft) {
-            if (swapLeft) {
-                HeapNode<KeyType> *temp = leftSibling;
-                if (temp != nullptr) {
-                    temp->rightSibling = n;
-                }
-                if (n != nullptr) {
-                    if (n->leftSibling != nullptr) {
-                        n->leftSibling->rightSibling = n->rightSibling;
-                    }
-                    if (n->rightSibling != nullptr) {
-                        n->rightSibling->leftSibling = n->leftSibling;
-                    }
-                    n->rightSibling = this;
-                    n->leftSibling = temp;
-                }
-                leftSibling = n;
-            } else {
-                HeapNode<KeyType> *temp = rightSibling;
-                if (temp != nullptr) {
-                    temp->leftSibling = n;
-                }
-                if (n != nullptr) {
-                    if (n->leftSibling != nullptr) {
-                        n->leftSibling->rightSibling = n->rightSibling;
-                    }
-                    if (n->rightSibling != nullptr) {
-                        n->rightSibling->leftSibling = n->leftSibling;
-                    }
-                    n->leftSibling = this;
-                    n->rightSibling = temp;
-                }
-                rightSibling = n;
-            }
-        }
-
+        
         /**
          * @brief Adds a child to the node
          * 
          * @param n Child to add
          */
         void addChild(HeapNode<KeyType> *n) {
+            if (!n) return;
+
             n->disconnect();
             children.addFront(n);
 
             if (children.length() > 1) {
-                n->rightSibling = children[1];
-                children[children.length() - 1]->setRightSibling(children[0]);
+                n->setRightSibling(children[1]);
+                n->setLeftSibling(children[children.length() - 1]);
+                children[1]->setLeftSibling(n);
+                children[children.length() - 1]->setRightSibling(n);
             } else {
-                n->rightSibling = n;
+                n->setRightSibling(n);
+                n->setLeftSibling(n);
             }
+
             degree++;
         }
 };
