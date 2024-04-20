@@ -45,7 +45,9 @@ Class that represents a node in a Binomial Heap.
 \mbox{\hyperlink{class_heap_node}{void}} {\bfseries disconnect} ()
 \begin{DoxyCompactList}\small\item\em Disconnects the node from its siblings. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_heap_node_ae00d6e90dd3ca9dc82a601f8a84beb8d}{add\+Child}} (\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_heap_node}{n}})
-\begin{DoxyCompactList}\small\item\em Adds a child to the node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Adds a child to the node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_heap_node_af556c55efe9312c9022bafbe9f85b7e2}{get\+Smallest\+Rank\+Child}} ()
+\begin{DoxyCompactList}\small\item\em Gets the child with the smallest rank. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -181,6 +183,20 @@ Get the Right Sibling of the node.
 
 \begin{DoxyReturn}{Returns}
 Heap\+Node$<$\+Key\+Type$>$\texorpdfstring{$\ast$}{*} Pointer to the right sibling 
+\end{DoxyReturn}
+\Hypertarget{class_heap_node_af556c55efe9312c9022bafbe9f85b7e2}\label{class_heap_node_af556c55efe9312c9022bafbe9f85b7e2} 
+\index{HeapNode$<$ KeyType $>$@{HeapNode$<$ KeyType $>$}!getSmallestRankChild@{getSmallestRankChild}}
+\index{getSmallestRankChild@{getSmallestRankChild}!HeapNode$<$ KeyType $>$@{HeapNode$<$ KeyType $>$}}
+\doxysubsubsection{\texorpdfstring{getSmallestRankChild()}{getSmallestRankChild()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \\
+\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\+::get\+Smallest\+Rank\+Child (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the child with the smallest rank. 
+
+\begin{DoxyReturn}{Returns}
+Heap\+Node$<$\+Key\+Type$>$\texorpdfstring{$\ast$}{*} Pointer to the child with the smallest rank 
 \end{DoxyReturn}
 \Hypertarget{class_heap_node_a13b9560c57403b2a77937412b74632d3}\label{class_heap_node_a13b9560c57403b2a77937412b74632d3} 
 \index{HeapNode$<$ KeyType $>$@{HeapNode$<$ KeyType $>$}!operator=@{operator=}}

@@ -26,76 +26,83 @@ template <typename KeyType> class BHeap {
 
         /**
          * @brief Consolidates the heap by merging trees of the same degree
+         * 
+         * @param currentNode Node to start consolidating from
          */
         // TODO: Consolidate is supposed to start with the smallest rank child of the extracted node
         void consolidate() {
             // Create an array to store the roots of the trees according to their degree
-            CircularDynamicArray<HeapNode<KeyType> *> degreeArray(log2(size) + 1);
-            HeapNode<KeyType> *currentNode = rootNode;
+            // Using the maximum possible degree plus one for safety
+            int maxPossibleDegree = static_cast<int>(log2(size)) + 1;
+            CircularDynamicArray<HeapNode<KeyType>*> degreeArray(maxPossibleDegree + 1);
 
-            // Traverse the root list and merge trees of the same degree
+            HeapNode<KeyType>* current = rootNode;
+            HeapNode<KeyType>* next = nullptr;
+
+            // First pass to ensure all slots in degreeArray are initially nullptr
+            for (int i = 0; i <= maxPossibleDegree; i++) {
+                degreeArray[i] = nullptr;
+            }
+
+            // Traverse the root list
             do {
-                int currentDegree = currentNode->getDegree();
-                cout << "Current Node: " << currentNode->getKey() << endl;
-                cout << "Current Degree: " << currentDegree << endl;
+                HeapNode<KeyType>* x = current;
+                current = current->getRightSibling();
+                int currentDegree = x->getDegree();
 
                 while (degreeArray[currentDegree] != nullptr) {
-                    HeapNode<KeyType> *otherNode = degreeArray[currentDegree];
-                    if (currentNode->getKey() > otherNode->getKey()) {
-                        HeapNode<KeyType> *temp = currentNode;
-                        currentNode = otherNode;
-                        otherNode = temp;
-                    } 
-                    currentNode->addChild(otherNode);
-                    degreeArray[currentDegree] = nullptr;
-                    currentDegree++;
-                    cout << "Linked Nodes with keys " << currentNode->getKey() << " and " << otherNode->getKey() << endl;
-                    printRootList();
+                    HeapNode<KeyType>* y = degreeArray[currentDegree];
+                    if (y == x) {
+                        break;  // Same node encountered, break to prevent infinite loop
+                    }
+                    degreeArray[currentDegree] = nullptr;  // Clear the slot
+
+                    // Ensure x is the node with the smaller key
+                    if (x->getKey() > y->getKey()) {
+                        swap(x, y);  // Swap nodes if necessary
+                    }
+
+                    // Make y a child of x
+                    x->addChild(y);
+                    y->setRightSibling(nullptr);
+                    y->setLeftSibling(nullptr);
+                    cout << "Linking trees with degree " << currentDegree << " with keys: " << x->getKey() << " and " << y->getKey() << endl;
+
+                    x->increaseDegree();
+                    currentDegree = x->getDegree();
                 }
-                degreeArray[currentDegree] = currentNode;
-                currentNode = currentNode->getRightSibling();
-            } while (currentNode != rootNode);
 
-            cout << "Root Node: " << rootNode->getKey() << endl;
+                // Ensure current degree is within bounds
+                if (currentDegree > maxPossibleDegree) {
+                    // This should not happen, but we resize the array for safety in case of an unexpected condition
+                    //degreeArray.resize(currentDegree + 1);
+                }
+                degreeArray[currentDegree] = x;
+            } while (current != rootNode);
 
-            // Find the minimum key in the heap
-            HeapNode<KeyType>* first = nullptr;
-            HeapNode<KeyType>* last = nullptr;
+            // Reset the root list
             rootNode = nullptr;
+            HeapNode<KeyType>* lastInserted = nullptr;
 
-            // Traverse the degree array and create a new root list
-            for (int i = 0; i < degreeArray.length(); i++) {
+            // Reconstruct the root list from the degree array
+            for (int i = 0; i <= maxPossibleDegree; i++) {
                 if (degreeArray[i] != nullptr) {
                     if (rootNode == nullptr) {
                         rootNode = degreeArray[i];
-                        first = rootNode;
-                        last = rootNode;
+                        lastInserted = rootNode;
                         rootNode->setLeftSibling(rootNode);
                         rootNode->setRightSibling(rootNode);
                     } else {
-                        last->setRightSibling(degreeArray[i]);
-                        degreeArray[i]->setLeftSibling(last);
-                        last = degreeArray[i];
-                        last->setRightSibling(first);
-                        first->setLeftSibling(last);
-                    }
-
-                    // Check if the current node has a smaller key
-                    if (degreeArray[i]->getKey() < rootNode->getKey()) {
-                        rootNode = degreeArray[i];
+                        lastInserted->setRightSibling(degreeArray[i]);
+                        degreeArray[i]->setLeftSibling(lastInserted);
+                        lastInserted = degreeArray[i];
+                        lastInserted->setRightSibling(rootNode);  // Maintain the circular list
+                        rootNode->setLeftSibling(lastInserted);
                     }
                 }
             }
-
-            // Ensure the list is circular
-            if (last != nullptr && first != nullptr) {
-                last->setRightSibling(first);
-                first->setLeftSibling(last);
-            }
-
-            cout << "Root Node: " << rootNode->getKey() << endl;
-            printNodeList(rootNode->getChildren().getFrontValue());
         }
+
 
     public:
         /**
@@ -171,6 +178,7 @@ template <typename KeyType> class BHeap {
 
             KeyType minKey = peekKey();
             HeapNode<KeyType> *minNode = rootNode;
+            HeapNode<KeyType> *smallestRankChild = minNode->getSmallestRankChild();
             minNode->shiftChildrenUp();
 
             if (minNode->getRightSibling() == minNode && minNode->getDegree() == 0) {
@@ -185,7 +193,6 @@ template <typename KeyType> class BHeap {
             delete minNode;
             return minKey; 
         }
-
         /**
          * @brief Merges two binomial heaps and deletes the other heap
          * 

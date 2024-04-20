@@ -9,16 +9,17 @@ int main() {
     char test1[10] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
     char test2[6] = {'a','b','c','d','e','f'};
     int test3[20] = {10, 2, 21, 13, 9, 4, 15, 7, 12, 6, 8, 17, 1, 18, 3, 19, 5, 20, 11, 14};
+    int test5[6] = {1, 2, 3, 4, 5, 6};
     BHeap<char> heap1(test1, 10), heap2(test2, 6);
-    BHeap<int> heap3, heap4;
+    BHeap<int> heap3, heap4, heap5(test5, 6);
 
     for (int i = 0; i < 20; i++) {
         heap3.insert(test3[i]);
     }
 
-    for (int i = 1; i < 200; i++) {
+    /*for (int i = 1; i < 200; i++) {
         heap4.insert(i);
-    }
+    }*/
 
     cout << "Test 1 Extract: " << heap1.extractMin() << endl;
     cout << "Test 1 Key Print: " << endl;
@@ -32,7 +33,11 @@ int main() {
     cout << "Test 3 Key Print: " << endl;
     heap3.printKey();
 
-    cout << "Test 4 Extract: " << heap4.extractMin() << endl;
+    /*cout << "Test 4 Extract: " << heap4.extractMin() << endl;
     cout << "Test 4 Key Print: " << endl;
-    heap4.printKey();
+    heap4.printKey();*/
+
+    cout << "Test 5 Extract: " << heap5.extractMin() << endl;
+    cout << "Test 5 Key Print: " << endl;
+    heap5.printKey();
 }

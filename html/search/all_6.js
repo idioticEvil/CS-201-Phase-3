@@ -7,5 +7,6 @@ var searchData=
   ['getfrontvalue_4',['getFrontValue',['../class_circular_dynamic_array.html#ac6f5bc5d4f1589bec8b1d4dcc6206ada',1,'CircularDynamicArray']]],
   ['getkey_5',['getKey',['../class_heap_node.html#a13155c12767091ff78220efe1510fd3e',1,'HeapNode']]],
   ['getleftsibling_6',['getLeftSibling',['../class_heap_node.html#a5685102ce70079848be7757cb3cfc8c6',1,'HeapNode']]],
-  ['getrightsibling_7',['getRightSibling',['../class_heap_node.html#a8d3612bafa39b291a8aa4abe6ce61b28',1,'HeapNode']]]
+  ['getrightsibling_7',['getRightSibling',['../class_heap_node.html#a8d3612bafa39b291a8aa4abe6ce61b28',1,'HeapNode']]],
+  ['getsmallestrankchild_8',['getSmallestRankChild',['../class_heap_node.html#af556c55efe9312c9022bafbe9f85b7e2',1,'HeapNode']]]
 ];

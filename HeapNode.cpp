@@ -131,6 +131,13 @@ template <typename KeyType> class HeapNode {
         }
 
         /**
+         * @brief Increase the degree of the node
+         */
+        void increaseDegree() {
+            degree++;
+        }
+
+        /**
          * @brief Set the key of the node
          * 
          * @param k New key
@@ -204,7 +211,7 @@ template <typename KeyType> class HeapNode {
             leftSibling = nullptr;
             rightSibling = nullptr;
         }
-        
+
         /**
          * @brief Adds a child to the node
          * 
@@ -225,7 +232,32 @@ template <typename KeyType> class HeapNode {
                 n->setRightSibling(n);
                 n->setLeftSibling(n);
             }
-
             degree++;
+        }
+
+        /**
+         * @brief Gets the child with the smallest rank
+         * 
+         * @return HeapNode<KeyType>* Pointer to the child with the smallest rank
+         */
+        HeapNode<KeyType>* getSmallestRankChild() {
+            if (children.isEmpty()) {
+                cout << "Tried to get smallest rank child from a node with no children" << endl;
+                cout << "Node Key: " << key << endl;
+                cout << "Returning: " << this->rightSibling->getKey() << endl;
+                return this->rightSibling;
+            }
+
+            HeapNode<KeyType>* smallest = children.getFrontValue();
+            HeapNode<KeyType>* child = children.getFrontValue()->getRightSibling();
+
+            while (child != nullptr) {
+                if (child->getDegree() < smallest->getDegree()) {
+                    smallest = child;
+                }
+                child = child->getRightSibling();
+            }
+
+            return smallest;
         }
 };

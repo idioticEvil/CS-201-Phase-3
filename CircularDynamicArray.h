@@ -155,6 +155,7 @@ template <typename T> class CircularDynamicArray {
          */
         T& operator[](int i) {
             if (i < 0 || i >= size) {
+                cout << "Index: " << i << " Size: " << size << endl;
                 throw std::out_of_range("Index out of range");
             }
             return data[(front + i) % cap];
@@ -476,6 +477,16 @@ template <typename T> class CircularDynamicArray {
             } else {
                 throw std::out_of_range("k is out of range");
             }
+        }
+
+        /**
+         * @brief Checks if the array is empty
+         * 
+         * @return true Array is empty
+         * @return false Array is not empty
+         */
+        bool isEmpty() {
+            return size == 0;
         }
 };
 
