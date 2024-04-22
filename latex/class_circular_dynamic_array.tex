@@ -82,7 +82,9 @@ A circular dynamic array that can store any type of data.
 \mbox{\hyperlink{class_heap_node}{T}} \mbox{\hyperlink{class_circular_dynamic_array_a88c2468bc0113e0a6560132afd75c1d6}{QSelect}} (\mbox{\hyperlink{class_heap_node}{int}} \mbox{\hyperlink{class_heap_node}{k}})
 \begin{DoxyCompactList}\small\item\em Returns the value at index i, shell function for quick\+Select. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_heap_node}{T}} \mbox{\hyperlink{class_circular_dynamic_array_a6e4e2d3f314b19279312e63acfe4b5de}{quick\+Select}} (\mbox{\hyperlink{class_circular_dynamic_array}{Circular\+Dynamic\+Array}}$<$ \mbox{\hyperlink{class_heap_node}{T}} $>$ \&\mbox{\hyperlink{class_heap_node}{arr}}, \mbox{\hyperlink{class_heap_node}{int}} \mbox{\hyperlink{class_heap_node}{k}})
-\begin{DoxyCompactList}\small\item\em Returns the value at index i. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the value at index i. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_heap_node}{bool}} \mbox{\hyperlink{class_circular_dynamic_array_a16f303f24935896e00c4904f2d063637}{is\+Empty}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the array is empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -257,6 +259,22 @@ Returns the value at the end of the array.
 
 \begin{DoxyReturn}{Returns}
 T The value at the end of the array 
+\end{DoxyReturn}
+\Hypertarget{class_circular_dynamic_array_a16f303f24935896e00c4904f2d063637}\label{class_circular_dynamic_array_a16f303f24935896e00c4904f2d063637} 
+\index{CircularDynamicArray$<$ T $>$@{CircularDynamicArray$<$ T $>$}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!CircularDynamicArray$<$ T $>$@{CircularDynamicArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{T}} $>$ \\
+\mbox{\hyperlink{class_heap_node}{bool}} \mbox{\hyperlink{class_circular_dynamic_array}{Circular\+Dynamic\+Array}}$<$ \mbox{\hyperlink{class_heap_node}{T}} $>$\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the array is empty. 
+
+\begin{DoxyReturn}{Returns}
+true Array is empty 
+
+false Array is not empty 
 \end{DoxyReturn}
 \Hypertarget{class_circular_dynamic_array_ad85b368c47b489bd2ab61e5b93718042}\label{class_circular_dynamic_array_ad85b368c47b489bd2ab61e5b93718042} 
 \index{CircularDynamicArray$<$ T $>$@{CircularDynamicArray$<$ T $>$}!length@{length}}

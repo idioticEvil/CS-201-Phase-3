@@ -18,14 +18,6 @@ template <typename KeyType> class HeapNode {
         int degree;
 
     public:
-        /**
-         * @brief Construct a new empty Heap Node object
-         */
-        HeapNode() {
-            leftSibling = nullptr;
-            rightSibling = nullptr;
-            degree = 0;
-        }
 
         /**
          * @brief Construct a new Heap Node object with a key
@@ -197,37 +189,43 @@ template <typename KeyType> class HeapNode {
         }
 
         /**
-         * @brief Disconnects the node from its siblings
-         */
-        void disconnect() {
-            if (leftSibling != nullptr) {
-                leftSibling->rightSibling = rightSibling;
-            }
-
-            if (rightSibling != nullptr) {
-                rightSibling->leftSibling = leftSibling;
-            }
-
-            leftSibling = nullptr;
-            rightSibling = nullptr;
-        }
-
-        /**
-         * @brief Adds a child to the node
+         * @brief Adds a child to the node and disconnects the node from its siblings
          * 
          * @param n Child to add
          */
         void addChild(HeapNode<KeyType> *n) {
             if (!n) return;
 
-            n->disconnect();
-            children.addFront(n);
+            if (n == this) {
+                throw invalid_argument("Cannot add a node as a child of itself");
+            }
+
+            if (n->getLeftSibling() != nullptr) {
+                n->getLeftSibling()->setRightSibling(n->getRightSibling());
+            }
+
+            if (n->getRightSibling() != nullptr) {
+                n->getRightSibling()->setLeftSibling(n->getLeftSibling());
+            }
+
+            if (n->getLeftSibling() == this) {
+                leftSibling = n->getLeftSibling();
+            }
+
+            if (n->getRightSibling() == this) {
+                rightSibling = n->getRightSibling();
+            }
+
+            n->setLeftSibling(nullptr);
+            n->setRightSibling(nullptr);
+
+            children.addEnd(n);
 
             if (children.length() > 1) {
-                n->setRightSibling(children[1]);
-                n->setLeftSibling(children[children.length() - 1]);
-                children[1]->setLeftSibling(n);
-                children[children.length() - 1]->setRightSibling(n);
+                n->setLeftSibling(children[children.length() - 2]);
+                n->setRightSibling(children[0]);
+                children[children.length() - 2]->setRightSibling(n);
+                children[0]->setLeftSibling(n);
             } else {
                 n->setRightSibling(n);
                 n->setLeftSibling(n);

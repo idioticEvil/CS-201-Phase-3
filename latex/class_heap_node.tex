@@ -8,9 +8,6 @@ Class that represents a node in a Binomial Heap.
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd}\label{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd} 
-{\bfseries Heap\+Node} ()
-\begin{DoxyCompactList}\small\item\em Construct a new empty Heap Node object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{Heap\+Node}} (\mbox{\hyperlink{class_heap_node}{Key\+Type}} \mbox{\hyperlink{class_heap_node}{k}})
 \begin{DoxyCompactList}\small\item\em Construct a new Heap Node object with a key. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_heap_node_a5f39e7b2dec51982f17f24f4c5fa0797}{Heap\+Node}} (\mbox{\hyperlink{class_heap_node}{const}} \mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \&\mbox{\hyperlink{class_heap_node}{other}})
@@ -30,6 +27,9 @@ Class that represents a node in a Binomial Heap.
 \begin{DoxyCompactList}\small\item\em Get the Children of the node. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_heap_node}{int}} \mbox{\hyperlink{class_heap_node_a72bd008b0470fc33411bdf4d0203d8fa}{get\+Degree}} ()
 \begin{DoxyCompactList}\small\item\em Get the Degree of the node. \end{DoxyCompactList}\item 
+\Hypertarget{class_heap_node_a0f6ec28e72ec4c09c1617d9140f83d1d}\label{class_heap_node_a0f6ec28e72ec4c09c1617d9140f83d1d} 
+\mbox{\hyperlink{class_heap_node}{void}} {\bfseries increase\+Degree} ()
+\begin{DoxyCompactList}\small\item\em Increase the degree of the node. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_heap_node_aea66435892513e0ca56d093f3ff41fe9}{set\+Key}} (\mbox{\hyperlink{class_heap_node}{Key\+Type}} \mbox{\hyperlink{class_heap_node}{k}})
 \begin{DoxyCompactList}\small\item\em Set the key of the node. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{set\+Left\+Sibling}} (\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_heap_node}{ls}})
@@ -41,13 +41,13 @@ Class that represents a node in a Binomial Heap.
 \Hypertarget{class_heap_node_ab5d80ad2ae3b0994113d17237d32e069}\label{class_heap_node_ab5d80ad2ae3b0994113d17237d32e069} 
 \mbox{\hyperlink{class_heap_node}{void}} {\bfseries shift\+Children\+Up} ()
 \begin{DoxyCompactList}\small\item\em Shifts the children of the node up one level. \end{DoxyCompactList}\item 
-\Hypertarget{class_heap_node_a7532fafe2a647c1cfef5e7afe853ad5e}\label{class_heap_node_a7532fafe2a647c1cfef5e7afe853ad5e} 
-\mbox{\hyperlink{class_heap_node}{void}} {\bfseries disconnect} ()
-\begin{DoxyCompactList}\small\item\em Disconnects the node from its siblings. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_heap_node_ae00d6e90dd3ca9dc82a601f8a84beb8d}{add\+Child}} (\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_heap_node}{n}})
-\begin{DoxyCompactList}\small\item\em Adds a child to the node. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_heap_node_af556c55efe9312c9022bafbe9f85b7e2}{get\+Smallest\+Rank\+Child}} ()
-\begin{DoxyCompactList}\small\item\em Gets the child with the smallest rank. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Adds a child to the node and disconnects the node from its siblings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_heap_node}{static}} \mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_heap_node_a03bc84e22331f49803ae32c5f09a5430}{swap}} (\mbox{\hyperlink{class_heap_node}{Heap\+Node}} \texorpdfstring{$\ast$}{*}\&\mbox{\hyperlink{class_heap_node}{x}}, \mbox{\hyperlink{class_heap_node}{Heap\+Node}} \texorpdfstring{$\ast$}{*}\&\mbox{\hyperlink{class_heap_node}{y}})
+\begin{DoxyCompactList}\small\item\em Swaps two Heap Node objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -107,7 +107,7 @@ Construct a new Heap Node object from another Heap Node object.
 
 
 
-Adds a child to the node. 
+Adds a child to the node and disconnects the node from its siblings. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -183,20 +183,6 @@ Get the Right Sibling of the node.
 
 \begin{DoxyReturn}{Returns}
 Heap\+Node$<$\+Key\+Type$>$\texorpdfstring{$\ast$}{*} Pointer to the right sibling 
-\end{DoxyReturn}
-\Hypertarget{class_heap_node_af556c55efe9312c9022bafbe9f85b7e2}\label{class_heap_node_af556c55efe9312c9022bafbe9f85b7e2} 
-\index{HeapNode$<$ KeyType $>$@{HeapNode$<$ KeyType $>$}!getSmallestRankChild@{getSmallestRankChild}}
-\index{getSmallestRankChild@{getSmallestRankChild}!HeapNode$<$ KeyType $>$@{HeapNode$<$ KeyType $>$}}
-\doxysubsubsection{\texorpdfstring{getSmallestRankChild()}{getSmallestRankChild()}}
-{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \\
-\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\+::get\+Smallest\+Rank\+Child (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Gets the child with the smallest rank. 
-
-\begin{DoxyReturn}{Returns}
-Heap\+Node$<$\+Key\+Type$>$\texorpdfstring{$\ast$}{*} Pointer to the child with the smallest rank 
 \end{DoxyReturn}
 \Hypertarget{class_heap_node_a13b9560c57403b2a77937412b74632d3}\label{class_heap_node_a13b9560c57403b2a77937412b74632d3} 
 \index{HeapNode$<$ KeyType $>$@{HeapNode$<$ KeyType $>$}!operator=@{operator=}}
@@ -279,6 +265,24 @@ Set the Right Sibling object.
 
 \begin{DoxyParams}{Parameters}
 {\em rs} & The new right sibling \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_heap_node_a03bc84e22331f49803ae32c5f09a5430}\label{class_heap_node_a03bc84e22331f49803ae32c5f09a5430} 
+\index{HeapNode$<$ KeyType $>$@{HeapNode$<$ KeyType $>$}!swap@{swap}}
+\index{swap@{swap}!HeapNode$<$ KeyType $>$@{HeapNode$<$ KeyType $>$}}
+\doxysubsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \\
+\mbox{\hyperlink{class_heap_node}{static}} \mbox{\hyperlink{class_heap_node}{void}} \mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\+::swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*}\&}]{x,  }\item[{\mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*}\&}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Swaps two Heap Node objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & First node \\
+\hline
+{\em y} & Second node \\
 \hline
 \end{DoxyParams}
 

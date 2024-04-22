@@ -16,156 +16,151 @@
 \DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ degree;}
 \DoxyCodeLine{00019\ }
 \DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd}{HeapNode}}()\ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ degree\ =\ 0;}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{HeapNode}}(\mbox{\hyperlink{class_heap_node}{KeyType}}\ \mbox{\hyperlink{class_heap_node}{k}})\ \{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ \mbox{\hyperlink{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd}{k}};}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ degree\ =\ 0;}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node_a5f39e7b2dec51982f17f24f4c5fa0797}{HeapNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\&\ \mbox{\hyperlink{class_heap_node}{other}})\ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ \mbox{\hyperlink{class_heap_node}{other}}.key;}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ children\ =\ \mbox{\hyperlink{class_heap_node}{other}}.children;}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ degree\ =\ \mbox{\hyperlink{class_heap_node}{other}}.degree;}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \mbox{\hyperlink{class_heap_node}{other}}.leftSibling;}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \mbox{\hyperlink{class_heap_node}{other}}.rightSibling;}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\&\ \mbox{\hyperlink{class_heap_node_a13b9560c57403b2a77937412b74632d3}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\&\ \mbox{\hyperlink{class_heap_node}{other}})\ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&\mbox{\hyperlink{class_heap_node}{other}})\ \{}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ \mbox{\hyperlink{class_heap_node}{other}}.key;}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ children\ =\ \mbox{\hyperlink{class_heap_node}{other}}.children;}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ degree\ =\ \mbox{\hyperlink{class_heap_node}{other}}.degree;}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ leftSibling;}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ rightSibling;}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{other}}.leftSibling)\ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd}{HeapNode<KeyType>}}(*\mbox{\hyperlink{class_heap_node}{other}}.leftSibling);}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{other}}.rightSibling)\ \{}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd}{HeapNode<KeyType>}}(*\mbox{\hyperlink{class_heap_node}{other}}.rightSibling);}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{HeapNode}}(\mbox{\hyperlink{class_heap_node}{KeyType}}\ \mbox{\hyperlink{class_heap_node}{k}})\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{k}};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ degree\ =\ 0;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node_a5f39e7b2dec51982f17f24f4c5fa0797}{HeapNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\&\ \mbox{\hyperlink{class_heap_node}{other}})\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ \mbox{\hyperlink{class_heap_node}{other}}.key;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ children\ =\ \mbox{\hyperlink{class_heap_node}{other}}.children;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ degree\ =\ \mbox{\hyperlink{class_heap_node}{other}}.degree;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \mbox{\hyperlink{class_heap_node}{other}}.leftSibling;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \mbox{\hyperlink{class_heap_node}{other}}.rightSibling;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\&\ \mbox{\hyperlink{class_heap_node_a13b9560c57403b2a77937412b74632d3}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\&\ \mbox{\hyperlink{class_heap_node}{other}})\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&\mbox{\hyperlink{class_heap_node}{other}})\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ \mbox{\hyperlink{class_heap_node}{other}}.key;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ children\ =\ \mbox{\hyperlink{class_heap_node}{other}}.children;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ degree\ =\ \mbox{\hyperlink{class_heap_node}{other}}.degree;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ leftSibling;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ rightSibling;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{other}}.leftSibling)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{HeapNode<KeyType>}}(*\mbox{\hyperlink{class_heap_node}{other}}.leftSibling);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{other}}.rightSibling)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{HeapNode<KeyType>}}(*\mbox{\hyperlink{class_heap_node}{other}}.rightSibling);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node_a2867e00b8fdfe0412944c94cc1b3c871}{\string~HeapNode}}()\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00079\ }
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node_a2867e00b8fdfe0412944c94cc1b3c871}{\string~HeapNode}}()\ \{}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{KeyType}}\ \mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ key;}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00096\ }
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node_a5685102ce70079848be7757cb3cfc8c6}{getLeftSibling}}()\ \{}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ leftSibling;}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00105\ }
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}()\ \{}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rightSibling;}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00114\ }
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{CircularDynamicArray<HeapNode<KeyType>}}\ *>\ \mbox{\hyperlink{class_heap_node_ad0bd603ad2f73ed5c9ce956e7478d54f}{getChildren}}()\ \{}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ children;}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00123\ }
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_heap_node_a72bd008b0470fc33411bdf4d0203d8fa}{getDegree}}()\ \{}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ degree;}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00132\ }
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_aea66435892513e0ca56d093f3ff41fe9}{setKey}}(\mbox{\hyperlink{class_heap_node}{KeyType}}\ \mbox{\hyperlink{class_heap_node}{k}})\ \{}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ \mbox{\hyperlink{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd}{k}};}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(\mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{ls}})\ \{}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \mbox{\hyperlink{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd}{ls}};}
-\DoxyCodeLine{00149\ }
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{ls}}\ !=\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{ls}}-\/>rightSibling\ =\ \textcolor{keyword}{this};}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00154\ }
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(\mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}*\ \mbox{\hyperlink{class_heap_node}{sibling}})\ \{}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \mbox{\hyperlink{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd}{sibling}};}
-\DoxyCodeLine{00162\ }
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{sibling}}\ !=\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{sibling}}-\/>leftSibling\ =\ \textcolor{keyword}{this};}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00167\ }
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_af83b8b23101b8b21f4de8d319c334c24}{setDegree}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_heap_node}{d}})\ \{}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ degree\ =\ \mbox{\hyperlink{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd}{d}};}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00176\ }
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_ab5d80ad2ae3b0994113d17237d32e069}{shiftChildrenUp}}()\ \{}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (degree\ >\ 0)\ \{}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ children.getFrontValue()-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(leftSibling);}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(children.getFrontValue());}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ children.getEndValue()-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(rightSibling);}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(children.getEndValue());}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(rightSibling);}
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(leftSibling);}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00191\ }
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_a7532fafe2a647c1cfef5e7afe853ad5e}{disconnect}}()\ \{}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (leftSibling\ !=\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling-\/>rightSibling\ =\ rightSibling;}
-\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00199\ }
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rightSibling\ !=\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling-\/>leftSibling\ =\ leftSibling;}
-\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00203\ }
-\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00207\ }
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_ae00d6e90dd3ca9dc82a601f8a84beb8d}{addChild}}(\mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{n}})\ \{}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_heap_node}{n}})\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00215\ }
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_a7532fafe2a647c1cfef5e7afe853ad5e}{disconnect}}();}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ children.addFront(\mbox{\hyperlink{class_heap_node}{n}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{KeyType}}\ \mbox{\hyperlink{class_heap_node_a13155c12767091ff78220efe1510fd3e}{getKey}}()\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ key;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node_a5685102ce70079848be7757cb3cfc8c6}{getLeftSibling}}()\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ leftSibling;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}()\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rightSibling;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{CircularDynamicArray<HeapNode<KeyType>}}\ *>\ \mbox{\hyperlink{class_heap_node_ad0bd603ad2f73ed5c9ce956e7478d54f}{getChildren}}()\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ children;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_heap_node_a72bd008b0470fc33411bdf4d0203d8fa}{getDegree}}()\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ degree;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_a0f6ec28e72ec4c09c1617d9140f83d1d}{increaseDegree}}()\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ degree++;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_aea66435892513e0ca56d093f3ff41fe9}{setKey}}(\mbox{\hyperlink{class_heap_node}{KeyType}}\ \mbox{\hyperlink{class_heap_node}{k}})\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{k}};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(\mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{ls}})\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{ls}};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{ls}}\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{ls}}-\/>rightSibling\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(\mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}*\ \mbox{\hyperlink{class_heap_node}{sibling}})\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{sibling}};}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{sibling}}\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{sibling}}-\/>leftSibling\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_af83b8b23101b8b21f4de8d319c334c24}{setDegree}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_heap_node}{d}})\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ degree\ =\ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{d}};}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_ab5d80ad2ae3b0994113d17237d32e069}{shiftChildrenUp}}()\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (degree\ >\ 0)\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ children.getFrontValue()-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(leftSibling);}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(children.getFrontValue());}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ children.getEndValue()-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(rightSibling);}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(children.getEndValue());}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(rightSibling);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(leftSibling);}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_ae00d6e90dd3ca9dc82a601f8a84beb8d}{addChild}}(\mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}\ *\mbox{\hyperlink{class_heap_node}{n}})\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_heap_node}{n}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{n}}\ ==\ \textcolor{keyword}{this})\ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{invalid\_argument}}(\textcolor{stringliteral}{"{}Cannot\ add\ a\ node\ as\ a\ child\ of\ itself"{}});}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_a5685102ce70079848be7757cb3cfc8c6}{getLeftSibling}}()\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_a5685102ce70079848be7757cb3cfc8c6}{getLeftSibling}}()-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(\mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}());}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}()\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}()-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(\mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_a5685102ce70079848be7757cb3cfc8c6}{getLeftSibling}}());}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_a5685102ce70079848be7757cb3cfc8c6}{getLeftSibling}}()\ ==\ \textcolor{keyword}{this})\ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSibling\ =\ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_a5685102ce70079848be7757cb3cfc8c6}{getLeftSibling}}();}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}()\ ==\ \textcolor{keyword}{this})\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSibling\ =\ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}();}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00218\ }
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (children.length()\ >\ 1)\ \{}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(children[1]);}
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(children[children.length()\ -\/\ 1]);}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ children[1]-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(\mbox{\hyperlink{class_heap_node}{n}});}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ children[children.length()\ -\/\ 1]-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(\mbox{\hyperlink{class_heap_node}{n}});}
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(\mbox{\hyperlink{class_heap_node}{n}});}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(\mbox{\hyperlink{class_heap_node}{n}});}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00228\ }
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ degree++;}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00231\ }
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}*\ \mbox{\hyperlink{class_heap_node_af556c55efe9312c9022bafbe9f85b7e2}{getSmallestRankChild}}()\ \{}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (children\ ==\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00241\ }
-\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}*\ \mbox{\hyperlink{class_heap_node}{smallest}}\ =\ children.getFrontValue();}
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode<KeyType>}}*\ \mbox{\hyperlink{class_heap_node}{child}}\ =\ children.getFrontValue()-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}();}
-\DoxyCodeLine{00244\ }
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{class_heap_node}{child}}\ !=\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_heap_node}{child}}-\/>\mbox{\hyperlink{class_heap_node_a72bd008b0470fc33411bdf4d0203d8fa}{getDegree}}()\ <\ \mbox{\hyperlink{class_heap_node}{smallest}}-\/>\mbox{\hyperlink{class_heap_node_a72bd008b0470fc33411bdf4d0203d8fa}{getDegree}}())\ \{}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{smallest}}\ =\ \mbox{\hyperlink{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd}{child}};}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{child}}\ =\ \mbox{\hyperlink{class_heap_node}{child}}-\/>\mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{getRightSibling}}();}
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00251\ }
-\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_heap_node_a8dc34b1da7a36be9f2f926f5edf105cd}{smallest}};}
-\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00254\ \};}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ children.addEnd(\mbox{\hyperlink{class_heap_node}{n}});}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (children.length()\ >\ 1)\ \{}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(children[children.length()\ -\/\ 2]);}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(children[0]);}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ children[children.length()\ -\/\ 2]-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(\mbox{\hyperlink{class_heap_node}{n}});}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ children[0]-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(\mbox{\hyperlink{class_heap_node}{n}});}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_accd61cfa4fb7f647d77afbb5af1d7c11}{setRightSibling}}(\mbox{\hyperlink{class_heap_node}{n}});}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{n}}-\/>\mbox{\hyperlink{class_heap_node_ab5ab4c2c05431214d46c90d7634e0612}{setLeftSibling}}(\mbox{\hyperlink{class_heap_node}{n}});}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ degree++;}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_heap_node_a03bc84e22331f49803ae32c5f09a5430}{swap}}(\mbox{\hyperlink{class_heap_node}{HeapNode}}*\&\ \mbox{\hyperlink{class_heap_node}{x}},\ \mbox{\hyperlink{class_heap_node}{HeapNode}}*\&\ \mbox{\hyperlink{class_heap_node}{y}})\ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{HeapNode}}*\ \mbox{\hyperlink{class_heap_node}{temp}}\ =\ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{x}};}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{x}}\ =\ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{y}};}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_heap_node}{y}}\ =\ \mbox{\hyperlink{class_heap_node_ab680433c186ac11051f82c796e6437e3}{temp}};}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00247\ \};}
 
 \end{DoxyCode}

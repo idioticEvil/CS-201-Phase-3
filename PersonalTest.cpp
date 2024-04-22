@@ -17,9 +17,9 @@ int main() {
         heap3.insert(test3[i]);
     }
 
-    /*for (int i = 1; i < 200; i++) {
+    for (int i = 1; i < 200; i++) {
         heap4.insert(i);
-    }*/
+    }
 
     cout << "Test 1 Extract: " << heap1.extractMin() << endl;
     cout << "Test 1 Key Print: " << endl;
@@ -31,11 +31,12 @@ int main() {
 
     cout << "Test 3 Extract: " << heap3.extractMin() << endl;
     cout << "Test 3 Key Print: " << endl;
+    heap3.printRootList();
     heap3.printKey();
 
-    /*cout << "Test 4 Extract: " << heap4.extractMin() << endl;
+    cout << "Test 4 Extract: " << heap4.extractMin() << endl;
     cout << "Test 4 Key Print: " << endl;
-    heap4.printKey();*/
+    heap4.printKey();
 
     cout << "Test 5 Extract: " << heap5.extractMin() << endl;
     cout << "Test 5 Key Print: " << endl;

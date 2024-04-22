@@ -6,13 +6,6 @@
 #include "HeapNode.cpp"
 using namespace std;
 
-/* TODO:
- * 1. Merge needs to be implemented
- * 2. Print key is also giving me the wrong order of node elements, either that is something
- *    wrong with printKey or the consolidate function
- * 3. I need to make more test cases
-*/
-
 /**
  * @brief Class that represents a Binomial Heap
  * 
@@ -22,7 +15,6 @@ template <typename KeyType> class BHeap {
     private:
         HeapNode<KeyType> *rootNode;
         int size;
-        int maxDegree;
 
         /**
          * @brief Consolidates the heap by merging trees of the same degree
@@ -30,23 +22,21 @@ template <typename KeyType> class BHeap {
          * @param currentNode Node to start consolidating from
          */
         void consolidate() {
-            // Create an array to store the roots of the trees according to their degree
-            // Using the maximum possible degree plus one for safety
-            int maxPossibleDegree = static_cast<int> (log2(size) + 1);
+            // Create an array to store the roots of the trees of each degree
+            int maxPossibleDegree = static_cast<int>(log2(size) + 1);
             vector<HeapNode<KeyType>*> degreeArray(maxPossibleDegree + 1, nullptr);
             HeapNode<KeyType>* current = rootNode;
             HeapNode<KeyType>* x = nullptr;
-            HeapNode<KeyType>* next = nullptr;
 
-            // Traverse the root list
+            // Traverse the root list and consolidate trees of the same degree
             do {
                 x = current;
                 current = current->getRightSibling();
                 int currentDegree = x->getDegree();
 
-                // While there exists another node of the same degree
+                // While there exists another node of the same degree, link them
                 while (degreeArray[currentDegree] != nullptr) {
-                    HeapNode<KeyType>* y = degreeArray[currentDegree]; // another node of the same degree
+                    HeapNode<KeyType>* y = degreeArray[currentDegree];
 
                     // If x's key is greater than y's key, swap x and y
                     if (x->getKey() > y->getKey()) {
@@ -61,19 +51,18 @@ template <typename KeyType> class BHeap {
 
                     // Increase the degree of x since we've added a new child to it
                     currentDegree++;
-                    x->setDegree(currentDegree); // Update the degree of x
+                    x->setDegree(currentDegree);
                 }
 
                 // Save x to degreeArray for the new degree
                 degreeArray[currentDegree] = x;
 
                 // Ensure current degree is within bounds
-                if (currentDegree > maxPossibleDegree) {
-                    // This should not happen, but we resize the array for safety in case of an unexpected condition
+                if (currentDegree > maxPossibleDegree + 1) {
+                    cout << "Current Degree: " << currentDegree << endl;
+                    cout << "Max Possible Degree: " << maxPossibleDegree + 1 << endl;
                     throw runtime_error("Degree exceeds maximum possible degree");
                 }
-                degreeArray[currentDegree] = x;
-
             } while (current != rootNode);
 
             // Reset the root list
@@ -91,9 +80,15 @@ template <typename KeyType> class BHeap {
                     } else {
                         lastInserted->setRightSibling(degreeArray[i]);
                         degreeArray[i]->setLeftSibling(lastInserted);
+                        
                         lastInserted = degreeArray[i];
-                        lastInserted->setRightSibling(rootNode);  // Maintain the circular list
+                        lastInserted->setRightSibling(rootNode);
                         rootNode->setLeftSibling(lastInserted);
+
+                        // Update the root node if a new minimum is discovered
+                        if (degreeArray[i]->getKey() < rootNode->getKey()) {
+                            rootNode = degreeArray[i];
+                        }
                     }
                 }
             }
@@ -108,17 +103,12 @@ template <typename KeyType> class BHeap {
          */
         BHeap(KeyType K[], int s) {
             size = 0;
-            maxDegree = 0;
             rootNode = nullptr;
 
             // Insert all keys into the heap
             for (int i = 0; i < s; i++) {
                 insert(K[i]);
             }
-
-            //cout << "Finished inserting keys" << endl;
-            //cout << "Root Node: " << rootNode->getKey() << endl;
-            printRootList();
         }
 
         /**
@@ -127,7 +117,6 @@ template <typename KeyType> class BHeap {
         BHeap() {
             rootNode = nullptr;
             size = 0;
-            maxDegree = 0;
         }
 
         /**
@@ -137,10 +126,9 @@ template <typename KeyType> class BHeap {
          */
         void insert(KeyType k) {
             HeapNode<KeyType> *newNode = new HeapNode<KeyType>(k);
-            //cout << "Inserting " << k << endl;
 
+            // Set rootNode to newNode if heap is empty
             if (rootNode == nullptr) {
-                //cout << "Root Node is null, setting new node as root" << endl;
                 rootNode = newNode;
                 rootNode->setRightSibling(rootNode);
                 rootNode->setLeftSibling(rootNode);
@@ -150,6 +138,8 @@ template <typename KeyType> class BHeap {
                     rootNode->getLeftSibling()->setRightSibling(newNode);
                     newNode->setLeftSibling(rootNode->getLeftSibling());
                 }
+
+                // Update rootNode's siblings
                 newNode->setRightSibling(rootNode);
                 rootNode->setLeftSibling(newNode);
 
@@ -167,19 +157,29 @@ template <typename KeyType> class BHeap {
          * @return KeyType Minimum key in the heap
          */
         KeyType extractMin() {
+            // Throw an error if the heap is empty
             if (rootNode == nullptr) {
                 throw runtime_error("Heap is empty");
             }
 
+            // Extract the minimum key
             KeyType minKey = peekKey();
             HeapNode<KeyType> *minNode = rootNode;
-            minNode->shiftChildrenUp();
 
+            // Find the new minimum node
+            HeapNode<KeyType> *newMin;
+            if (!rootNode->getChildren().isEmpty()) {
+                newMin = rootNode->getChildren().getFrontValue();
+            } else {
+                newMin = rootNode->getRightSibling();
+            }
+
+            // Remove the minimum node from the root list
+            minNode->shiftChildrenUp();
             if (minNode->getRightSibling() == minNode && minNode->getDegree() == 0) {
                 rootNode = nullptr;
             } else {
-                rootNode = minNode->getRightSibling();
-                minNode->disconnect();
+                rootNode = newMin;
                 consolidate();
             }
 
@@ -194,24 +194,23 @@ template <typename KeyType> class BHeap {
          * @param H Binomial heap to merge with
          */
         void merge(BHeap<KeyType>& H) {
+            // If the other heap is empty, return
             if (H.rootNode == nullptr) {
-                return;  // Nothing to merge if H is empty
+                return;
             }
 
+            // If this heap is empty, take over the other heap's root list
             if (rootNode == nullptr) {
-                rootNode = H.rootNode;  // If this heap is empty, just take over H's root list
+                rootNode = H.rootNode;
                 size = H.size;
-                maxDegree = H.maxDegree;
                 H.rootNode = nullptr;
                 H.size = 0;
-                H.maxDegree = 0;
                 return;
             }
 
             // Linking the root lists
             HeapNode<KeyType>* thisLast = rootNode->getLeftSibling();
             HeapNode<KeyType>* hLast = H.rootNode->getLeftSibling();
-
             thisLast->setRightSibling(H.rootNode);
             H.rootNode->setLeftSibling(thisLast);
             hLast->setRightSibling(rootNode);
@@ -222,24 +221,22 @@ template <typename KeyType> class BHeap {
                 rootNode = H.rootNode;
             }
 
-            size += H.size;  // Update size
-            maxDegree = max(maxDegree, H.maxDegree);  // Update the max degree
+            // Update size
+            size += H.size;
 
             // Clear H's root to avoid double deletion problems
             H.rootNode = nullptr;
             H.size = 0;
-            H.maxDegree = 0;
         }
-
 
         /**
          * @brief Prints the keys in the heap in a modified preorder traversal
          */
         void printKey() {
-            if (rootNode == nullptr) {
-                return;
-            }
+            // Throw an error if the heap is empty
+            if (rootNode == nullptr) throw runtime_error("Heap is empty");
 
+            // Print the keys in the heap
             HeapNode<KeyType> *currentNode = rootNode;
             do {
                 cout << "B" << currentNode->getDegree() << ": " << endl;
@@ -255,7 +252,8 @@ template <typename KeyType> class BHeap {
          * @param node Node to start printing from
          */
         void printKeyHelper(HeapNode<KeyType> *node) {
-            if (node == nullptr) return;
+            // Throw an error if the node is null
+            if (node == nullptr) throw runtime_error("Node is null");
 
             // Print the key of the current node
             cout << node->getKey() << " ";
@@ -264,10 +262,11 @@ template <typename KeyType> class BHeap {
             HeapNode<KeyType> *child = node->getChildren().getFrontValue();
             if (child != nullptr) {
                 HeapNode<KeyType> *currentChild = child;
+                HeapNode<KeyType> *firstChild = child;
                 do {
                     printKeyHelper(currentChild);
                     currentChild = currentChild->getRightSibling();
-                } while (currentChild != child);
+                } while (currentChild != firstChild);
             }
         }
 
@@ -287,17 +286,12 @@ template <typename KeyType> class BHeap {
          * @brief Testing function that prints the keys in the root list
          */
         void printRootList() {
-            //cout << "Testing printRootList function" << endl;
             if (rootNode == nullptr) {
-                //cout << "Root Node is null" << endl;
+                throw runtime_error("Root list is empty");
                 return;
-            }
-            if (rootNode->getRightSibling() == nullptr) {
-                //cout << "We have a problem" << endl;
             }
 
             HeapNode<KeyType> *currentNode = rootNode;
-            //cout << "Root List: ";
             while (currentNode->getRightSibling() != rootNode) {
                 cout << currentNode->getKey() << " ";
                 currentNode = currentNode->getRightSibling();

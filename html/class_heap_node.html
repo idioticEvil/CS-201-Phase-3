@@ -73,6 +73,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_heap_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">HeapNode&lt; KeyType &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -83,10 +84,6 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8dc34b1da7a36be9f2f926f5edf105cd" id="r_a8dc34b1da7a36be9f2f926f5edf105cd"><td class="memItemLeft" align="right" valign="top"><a id="a8dc34b1da7a36be9f2f926f5edf105cd" name="a8dc34b1da7a36be9f2f926f5edf105cd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>HeapNode</b> ()</td></tr>
-<tr class="memdesc:a8dc34b1da7a36be9f2f926f5edf105cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new empty Heap Node object. <br /></td></tr>
-<tr class="separator:a8dc34b1da7a36be9f2f926f5edf105cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab680433c186ac11051f82c796e6437e3" id="r_ab680433c186ac11051f82c796e6437e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab680433c186ac11051f82c796e6437e3">HeapNode</a> (<a class="el" href="class_heap_node.html">KeyType</a> <a class="el" href="class_heap_node.html">k</a>)</td></tr>
 <tr class="memdesc:ab680433c186ac11051f82c796e6437e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Heap Node object with a key.  <br /></td></tr>
 <tr class="separator:ab680433c186ac11051f82c796e6437e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,6 +112,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a72bd008b0470fc33411bdf4d0203d8fa" id="r_a72bd008b0470fc33411bdf4d0203d8fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_heap_node.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72bd008b0470fc33411bdf4d0203d8fa">getDegree</a> ()</td></tr>
 <tr class="memdesc:a72bd008b0470fc33411bdf4d0203d8fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Degree of the node.  <br /></td></tr>
 <tr class="separator:a72bd008b0470fc33411bdf4d0203d8fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f6ec28e72ec4c09c1617d9140f83d1d" id="r_a0f6ec28e72ec4c09c1617d9140f83d1d"><td class="memItemLeft" align="right" valign="top"><a id="a0f6ec28e72ec4c09c1617d9140f83d1d" name="a0f6ec28e72ec4c09c1617d9140f83d1d"></a>
+<a class="el" href="class_heap_node.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>increaseDegree</b> ()</td></tr>
+<tr class="memdesc:a0f6ec28e72ec4c09c1617d9140f83d1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increase the degree of the node. <br /></td></tr>
+<tr class="separator:a0f6ec28e72ec4c09c1617d9140f83d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea66435892513e0ca56d093f3ff41fe9" id="r_aea66435892513e0ca56d093f3ff41fe9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_heap_node.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea66435892513e0ca56d093f3ff41fe9">setKey</a> (<a class="el" href="class_heap_node.html">KeyType</a> <a class="el" href="class_heap_node.html">k</a>)</td></tr>
 <tr class="memdesc:aea66435892513e0ca56d093f3ff41fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the key of the node.  <br /></td></tr>
 <tr class="separator:aea66435892513e0ca56d093f3ff41fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,16 +132,15 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="class_heap_node.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>shiftChildrenUp</b> ()</td></tr>
 <tr class="memdesc:ab5d80ad2ae3b0994113d17237d32e069"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shifts the children of the node up one level. <br /></td></tr>
 <tr class="separator:ab5d80ad2ae3b0994113d17237d32e069"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7532fafe2a647c1cfef5e7afe853ad5e" id="r_a7532fafe2a647c1cfef5e7afe853ad5e"><td class="memItemLeft" align="right" valign="top"><a id="a7532fafe2a647c1cfef5e7afe853ad5e" name="a7532fafe2a647c1cfef5e7afe853ad5e"></a>
-<a class="el" href="class_heap_node.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> ()</td></tr>
-<tr class="memdesc:a7532fafe2a647c1cfef5e7afe853ad5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects the node from its siblings. <br /></td></tr>
-<tr class="separator:a7532fafe2a647c1cfef5e7afe853ad5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae00d6e90dd3ca9dc82a601f8a84beb8d" id="r_ae00d6e90dd3ca9dc82a601f8a84beb8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_heap_node.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae00d6e90dd3ca9dc82a601f8a84beb8d">addChild</a> (<a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt; *<a class="el" href="class_heap_node.html">n</a>)</td></tr>
-<tr class="memdesc:ae00d6e90dd3ca9dc82a601f8a84beb8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a child to the node.  <br /></td></tr>
+<tr class="memdesc:ae00d6e90dd3ca9dc82a601f8a84beb8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a child to the node and disconnects the node from its siblings.  <br /></td></tr>
 <tr class="separator:ae00d6e90dd3ca9dc82a601f8a84beb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af556c55efe9312c9022bafbe9f85b7e2" id="r_af556c55efe9312c9022bafbe9f85b7e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af556c55efe9312c9022bafbe9f85b7e2">getSmallestRankChild</a> ()</td></tr>
-<tr class="memdesc:af556c55efe9312c9022bafbe9f85b7e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the child with the smallest rank.  <br /></td></tr>
-<tr class="separator:af556c55efe9312c9022bafbe9f85b7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a03bc84e22331f49803ae32c5f09a5430" id="r_a03bc84e22331f49803ae32c5f09a5430"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_heap_node.html">static</a> <a class="el" href="class_heap_node.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03bc84e22331f49803ae32c5f09a5430">swap</a> (<a class="el" href="class_heap_node.html">HeapNode</a> *&amp;<a class="el" href="class_heap_node.html">x</a>, <a class="el" href="class_heap_node.html">HeapNode</a> *&amp;<a class="el" href="class_heap_node.html">y</a>)</td></tr>
+<tr class="memdesc:a03bc84e22331f49803ae32c5f09a5430"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps two Heap Node objects.  <br /></td></tr>
+<tr class="separator:a03bc84e22331f49803ae32c5f09a5430"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename KeyType&gt;<br />
@@ -248,7 +248,7 @@ template&lt;<a class="el" href="class_heap_node.html">typename</a> <a class="el"
 </table>
 </div><div class="memdoc">
 
-<p>Adds a child to the node. </p>
+<p>Adds a child to the node and disconnects the node from its siblings. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n</td><td>Child to add </td></tr>
@@ -405,36 +405,6 @@ template&lt;<a class="el" href="class_heap_node.html">typename</a> <a class="el"
 
 <p>Get the Right Sibling of the node. </p>
 <dl class="section return"><dt>Returns</dt><dd>HeapNode&lt;KeyType&gt;* Pointer to the right sibling </dd></dl>
-
-</div>
-</div>
-<a id="af556c55efe9312c9022bafbe9f85b7e2" name="af556c55efe9312c9022bafbe9f85b7e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af556c55efe9312c9022bafbe9f85b7e2">&#9670;&#160;</a></span>getSmallestRankChild()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="class_heap_node.html">typename</a> <a class="el" href="class_heap_node.html">KeyType</a> &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt; * <a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt;::getSmallestRankChild </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets the child with the smallest rank. </p>
-<dl class="section return"><dt>Returns</dt><dd>HeapNode&lt;KeyType&gt;* Pointer to the child with the smallest rank </dd></dl>
 
 </div>
 </div>
@@ -608,6 +578,46 @@ template&lt;<a class="el" href="class_heap_node.html">typename</a> <a class="el"
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">rs</td><td>The new right sibling </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a03bc84e22331f49803ae32c5f09a5430" name="a03bc84e22331f49803ae32c5f09a5430"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03bc84e22331f49803ae32c5f09a5430">&#9670;&#160;</a></span>swap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="class_heap_node.html">typename</a> <a class="el" href="class_heap_node.html">KeyType</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_heap_node.html">static</a> <a class="el" href="class_heap_node.html">void</a> <a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt;::swap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt; *&amp;</td>          <td class="paramname"><span class="paramname"><em>x</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt; *&amp;</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Swaps two Heap Node objects. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>First node </td></tr>
+    <tr><td class="paramname">y</td><td>Second node </td></tr>
   </table>
   </dd>
 </dl>
