@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <stdexcept>
+#include <vector>
 #include "CircularDynamicArray.h"
 using namespace std;
 
@@ -12,7 +13,7 @@ using namespace std;
 template <typename KeyType> class HeapNode {
     private:
         KeyType key;
-        CircularDynamicArray<HeapNode<KeyType> *> children;
+        vector<HeapNode<KeyType> *> children;
         HeapNode<KeyType> *leftSibling;
         HeapNode<KeyType> *rightSibling;
         int degree;
@@ -106,9 +107,9 @@ template <typename KeyType> class HeapNode {
         /**
          * @brief Get the Children of the node
          * 
-         * @return CircularDynamicArray<HeapNode<KeyType> *> Children of the node
+         * @return vector<HeapNode<KeyType> *> Children of the node
          */
-        CircularDynamicArray<HeapNode<KeyType> *> getChildren() {
+        vector<HeapNode<KeyType> *> getChildren() {
             return children;
         }
 
@@ -218,12 +219,12 @@ template <typename KeyType> class HeapNode {
             n->setLeftSibling(NULL);
             n->setRightSibling(NULL);
 
-            children.addEnd(n);
+            children.push_back(n);
 
-            if (children.length() > 1) {
-                n->setLeftSibling(children[children.length() - 2]);
+            if (children.size() > 1) {
+                n->setLeftSibling(children[children.size() - 2]);
                 n->setRightSibling(children[0]);
-                children[children.length() - 2]->setRightSibling(n);
+                children[children.size() - 2]->setRightSibling(n);
                 children[0]->setLeftSibling(n);
             } else {
                 n->setRightSibling(n);
