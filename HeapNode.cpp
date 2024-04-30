@@ -178,10 +178,10 @@ template <typename KeyType> class HeapNode {
          */
         void shiftChildrenUp() {
             if (degree > 0) {
-                children.getFrontValue()->setLeftSibling(leftSibling);
-                leftSibling->setRightSibling(children.getFrontValue());
-                children.getEndValue()->setRightSibling(rightSibling);
-                rightSibling->setLeftSibling(children.getEndValue());
+                children.front()->setLeftSibling(leftSibling);
+                leftSibling->setRightSibling(children.front());
+                children.back()->setRightSibling(rightSibling);
+                rightSibling->setLeftSibling(children.front());
             } else {
                 leftSibling->setRightSibling(rightSibling);
                 rightSibling->setLeftSibling(leftSibling);

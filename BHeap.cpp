@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <stdexcept>
 #include <cmath>
-#include "CircularDynamicArray.h"
+#include <vector>
 #include "HeapNode.cpp"
 using namespace std;
 
@@ -168,8 +168,8 @@ template <typename KeyType> class BHeap {
 
             // Find the new minimum node
             HeapNode<KeyType> *newMin;
-            if (!rootNode->getChildren().isEmpty()) {
-                newMin = rootNode->getChildren().getFrontValue();
+            if (!rootNode->getChildren().empty()) {
+                newMin = rootNode->getChildren().front();
             } else {
                 newMin = rootNode->getRightSibling();
             }
@@ -259,10 +259,9 @@ template <typename KeyType> class BHeap {
             cout << node->getKey() << " ";
 
             // Recursively print the keys of the children of the current node
-            HeapNode<KeyType> *child = node->getChildren().getFrontValue();
-            if (child != NULL) {
-                HeapNode<KeyType> *currentChild = child;
-                HeapNode<KeyType> *firstChild = child;
+            if (!node->getChildren().empty()) {
+                HeapNode<KeyType> *currentChild = node->getChildren().front();
+                HeapNode<KeyType> *firstChild = currentChild;
                 do {
                     printKeyHelper(currentChild);
                     currentChild = currentChild->getRightSibling();
