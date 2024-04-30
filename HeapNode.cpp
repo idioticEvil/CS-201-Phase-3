@@ -18,7 +18,6 @@ template <typename KeyType> class HeapNode {
         int degree;
 
     public:
-
         /**
          * @brief Construct a new Heap Node object with a key
          * 
@@ -26,8 +25,8 @@ template <typename KeyType> class HeapNode {
          */
         HeapNode(KeyType k) {
             key = k;
-            leftSibling = nullptr;
-            rightSibling = nullptr;
+            leftSibling = NULL;
+            rightSibling = NULL;
             degree = 0;
         }
 
@@ -56,9 +55,9 @@ template <typename KeyType> class HeapNode {
                 children = other.children;
                 degree = other.degree;
                 delete leftSibling;
-                leftSibling = nullptr;
+                leftSibling = NULL;
                 delete rightSibling;
-                rightSibling = nullptr;
+                rightSibling = NULL;
                 if (other.leftSibling) {
                     leftSibling = new HeapNode<KeyType>(*other.leftSibling);
                 }
@@ -73,8 +72,8 @@ template <typename KeyType> class HeapNode {
          * @brief Destroy the Heap Node object
          */
         ~HeapNode() {
-            leftSibling = nullptr;
-            rightSibling = nullptr;
+            leftSibling = NULL;
+            rightSibling = NULL;
         }
 
         /**
@@ -146,7 +145,7 @@ template <typename KeyType> class HeapNode {
         void setLeftSibling(HeapNode<KeyType> *ls) {
             leftSibling = ls;
 
-            if (ls != nullptr) {
+            if (ls != NULL) {
                 ls->rightSibling = this;
             }
         }
@@ -159,7 +158,7 @@ template <typename KeyType> class HeapNode {
         void setRightSibling(HeapNode<KeyType>* sibling) {
             rightSibling = sibling;
 
-            if (sibling != nullptr) {
+            if (sibling != NULL) {
                 sibling->leftSibling = this;
             }
         }
@@ -200,11 +199,11 @@ template <typename KeyType> class HeapNode {
                 throw invalid_argument("Cannot add a node as a child of itself");
             }
 
-            if (n->getLeftSibling() != nullptr) {
+            if (n->getLeftSibling() != NULL) {
                 n->getLeftSibling()->setRightSibling(n->getRightSibling());
             }
 
-            if (n->getRightSibling() != nullptr) {
+            if (n->getRightSibling() != NULL) {
                 n->getRightSibling()->setLeftSibling(n->getLeftSibling());
             }
 
@@ -216,8 +215,8 @@ template <typename KeyType> class HeapNode {
                 rightSibling = n->getRightSibling();
             }
 
-            n->setLeftSibling(nullptr);
-            n->setRightSibling(nullptr);
+            n->setLeftSibling(NULL);
+            n->setRightSibling(NULL);
 
             children.addEnd(n);
 

@@ -118,7 +118,7 @@ template <typename T> class CircularDynamicArray {
                 front = src.front;
 
                 for (int i = 0; i < size; i++) {
-                    data[front + i] = src.data[(src.front + i) % src.cap];
+                    data[(front + i) % cap] = src.data[(src.front + i) % src.cap];
                 }
             }
             return *this;
@@ -294,9 +294,9 @@ template <typename T> class CircularDynamicArray {
         }
         
         /**
-         * @brief Returns the value at the end of the array
+         * @brief Returns the value at the front of the array
          * 
-         * @return T The value at the end of the array
+         * @return T The value at the front of the array
          */
         T& getFrontValue() {
             return data[front];
