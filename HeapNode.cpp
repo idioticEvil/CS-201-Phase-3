@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <stdexcept>
 #include <vector>
-#include "CircularDynamicArray.h"
 using namespace std;
 
 /**
