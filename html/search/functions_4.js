@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ensurelinkedcircularity_0',['ensureLinkedCircularity',['../class_b_heap.html#ad4e6d675521850ba55c07bccaf2eb70b',1,'BHeap']]],
-  ['extractmin_1',['extractMin',['../class_b_heap.html#a4ede7d6b71f641cd419e721458a76512',1,'BHeap']]]
+  ['heapnode_0',['HeapNode',['../class_heap_node.html#ab680433c186ac11051f82c796e6437e3',1,'HeapNode::HeapNode(KeyType k)'],['../class_heap_node.html#a5f39e7b2dec51982f17f24f4c5fa0797',1,'HeapNode::HeapNode(const HeapNode&lt; KeyType &gt; &amp;other)']]]
 ];

@@ -106,9 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8d3612bafa39b291a8aa4abe6ce61b28" id="r_a8d3612bafa39b291a8aa4abe6ce61b28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d3612bafa39b291a8aa4abe6ce61b28">getRightSibling</a> ()</td></tr>
 <tr class="memdesc:a8d3612bafa39b291a8aa4abe6ce61b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Right Sibling of the node.  <br /></td></tr>
 <tr class="separator:a8d3612bafa39b291a8aa4abe6ce61b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0bd603ad2f73ed5c9ce956e7478d54f" id="r_ad0bd603ad2f73ed5c9ce956e7478d54f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_circular_dynamic_array.html">CircularDynamicArray</a>&lt; <a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0bd603ad2f73ed5c9ce956e7478d54f">getChildren</a> ()</td></tr>
-<tr class="memdesc:ad0bd603ad2f73ed5c9ce956e7478d54f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Children of the node.  <br /></td></tr>
-<tr class="separator:ad0bd603ad2f73ed5c9ce956e7478d54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eb252a9adfebb7350ee296ce0c314f4" id="r_a0eb252a9adfebb7350ee296ce0c314f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_heap_node.html">vector</a>&lt; <a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0eb252a9adfebb7350ee296ce0c314f4">getChildren</a> ()</td></tr>
+<tr class="memdesc:a0eb252a9adfebb7350ee296ce0c314f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Children of the node.  <br /></td></tr>
+<tr class="separator:a0eb252a9adfebb7350ee296ce0c314f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72bd008b0470fc33411bdf4d0203d8fa" id="r_a72bd008b0470fc33411bdf4d0203d8fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_heap_node.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72bd008b0470fc33411bdf4d0203d8fa">getDegree</a> ()</td></tr>
 <tr class="memdesc:a72bd008b0470fc33411bdf4d0203d8fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Degree of the node.  <br /></td></tr>
 <tr class="separator:a72bd008b0470fc33411bdf4d0203d8fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -258,8 +258,8 @@ template&lt;<a class="el" href="class_heap_node.html">typename</a> <a class="el"
 
 </div>
 </div>
-<a id="ad0bd603ad2f73ed5c9ce956e7478d54f" name="ad0bd603ad2f73ed5c9ce956e7478d54f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0bd603ad2f73ed5c9ce956e7478d54f">&#9670;&#160;</a></span>getChildren()</h2>
+<a id="a0eb252a9adfebb7350ee296ce0c314f4" name="a0eb252a9adfebb7350ee296ce0c314f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eb252a9adfebb7350ee296ce0c314f4">&#9670;&#160;</a></span>getChildren()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -270,7 +270,7 @@ template&lt;<a class="el" href="class_heap_node.html">typename</a> <a class="el"
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_circular_dynamic_array.html">CircularDynamicArray</a>&lt; <a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt; * &gt; <a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt;::getChildren </td>
+          <td class="memname"><a class="el" href="class_heap_node.html">vector</a>&lt; <a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt; * &gt; <a class="el" href="class_heap_node.html">HeapNode</a>&lt; <a class="el" href="class_heap_node.html">KeyType</a> &gt;::getChildren </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -284,7 +284,7 @@ template&lt;<a class="el" href="class_heap_node.html">typename</a> <a class="el"
 </div><div class="memdoc">
 
 <p>Get the Children of the node. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_circular_dynamic_array.html" title="A circular dynamic array that can store any type of data.">CircularDynamicArray</a>&lt;HeapNode&lt;KeyType&gt; *&gt; Children of the node </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>vector&lt;HeapNode&lt;KeyType&gt; *&gt; Children of the node </dd></dl>
 
 </div>
 </div>

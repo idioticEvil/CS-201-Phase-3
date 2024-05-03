@@ -23,7 +23,7 @@ Class that represents a node in a Binomial Heap.
 \begin{DoxyCompactList}\small\item\em Get the Left Sibling object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_heap_node_a8d3612bafa39b291a8aa4abe6ce61b28}{get\+Right\+Sibling}} ()
 \begin{DoxyCompactList}\small\item\em Get the Right Sibling of the node. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_circular_dynamic_array}{Circular\+Dynamic\+Array}}$<$ \mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_heap_node_ad0bd603ad2f73ed5c9ce956e7478d54f}{get\+Children}} ()
+\mbox{\hyperlink{class_heap_node}{vector}}$<$ \mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_heap_node_a0eb252a9adfebb7350ee296ce0c314f4}{get\+Children}} ()
 \begin{DoxyCompactList}\small\item\em Get the Children of the node. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_heap_node}{int}} \mbox{\hyperlink{class_heap_node_a72bd008b0470fc33411bdf4d0203d8fa}{get\+Degree}} ()
 \begin{DoxyCompactList}\small\item\em Get the Degree of the node. \end{DoxyCompactList}\item 
@@ -114,19 +114,19 @@ Adds a child to the node and disconnects the node from its siblings.
 {\em n} & Child to add \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_heap_node_ad0bd603ad2f73ed5c9ce956e7478d54f}\label{class_heap_node_ad0bd603ad2f73ed5c9ce956e7478d54f} 
+\Hypertarget{class_heap_node_a0eb252a9adfebb7350ee296ce0c314f4}\label{class_heap_node_a0eb252a9adfebb7350ee296ce0c314f4} 
 \index{HeapNode$<$ KeyType $>$@{HeapNode$<$ KeyType $>$}!getChildren@{getChildren}}
 \index{getChildren@{getChildren}!HeapNode$<$ KeyType $>$@{HeapNode$<$ KeyType $>$}}
 \doxysubsubsection{\texorpdfstring{getChildren()}{getChildren()}}
 {\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_heap_node}{typename}} \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \\
-\mbox{\hyperlink{class_circular_dynamic_array}{Circular\+Dynamic\+Array}}$<$ \mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\+::get\+Children (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_heap_node}{vector}}$<$ \mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_heap_node}{Heap\+Node}}$<$ \mbox{\hyperlink{class_heap_node}{Key\+Type}} $>$\+::get\+Children (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Get the Children of the node. 
 
 \begin{DoxyReturn}{Returns}
-\doxylink{class_circular_dynamic_array}{Circular\+Dynamic\+Array}\texorpdfstring{$<$}{<}Heap\+Node$<$\+Key\+Type$>$ \texorpdfstring{$\ast$}{*}\texorpdfstring{$>$}{>} Children of the node 
+vector\texorpdfstring{$<$}{<}Heap\+Node$<$\+Key\+Type$>$ \texorpdfstring{$\ast$}{*}\texorpdfstring{$>$}{>} Children of the node 
 \end{DoxyReturn}
 \Hypertarget{class_heap_node_a72bd008b0470fc33411bdf4d0203d8fa}\label{class_heap_node_a72bd008b0470fc33411bdf4d0203d8fa} 
 \index{HeapNode$<$ KeyType $>$@{HeapNode$<$ KeyType $>$}!getDegree@{getDegree}}

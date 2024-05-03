@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../class_circular_dynamic_array.html#a0d48a987aba9830bb436c3075bc3a7f4',1,'CircularDynamicArray::operator=()'],['../class_heap_node.html#a13b9560c57403b2a77937412b74632d3',1,'HeapNode::operator=()']]],
-  ['operator_3d_3d_1',['operator==',['../class_circular_dynamic_array.html#a3569a2365ff94ae413b7c54ed70596c0',1,'CircularDynamicArray']]],
-  ['operator_5b_5d_2',['operator[]',['../class_circular_dynamic_array.html#ab7837825f7d17e2a978dba8ba785a78f',1,'CircularDynamicArray']]]
+  ['setdegree_0',['setDegree',['../class_heap_node.html#af83b8b23101b8b21f4de8d319c334c24',1,'HeapNode']]],
+  ['setkey_1',['setKey',['../class_heap_node.html#aea66435892513e0ca56d093f3ff41fe9',1,'HeapNode']]],
+  ['setleftsibling_2',['setLeftSibling',['../class_heap_node.html#ab5ab4c2c05431214d46c90d7634e0612',1,'HeapNode']]],
+  ['setrightsibling_3',['setRightSibling',['../class_heap_node.html#accd61cfa4fb7f647d77afbb5af1d7c11',1,'HeapNode']]],
+  ['shiftchildrenup_4',['shiftChildrenUp',['../class_heap_node.html#ab5d80ad2ae3b0994113d17237d32e069',1,'HeapNode']]],
+  ['swap_5',['swap',['../class_heap_node.html#a03bc84e22331f49803ae32c5f09a5430',1,'HeapNode']]]
 ];

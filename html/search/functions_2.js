@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['capacity_0',['capacity',['../class_circular_dynamic_array.html#a107d0dd2a6615b1a1a31150376366760',1,'CircularDynamicArray']]],
-  ['circulardynamicarray_1',['CircularDynamicArray',['../class_circular_dynamic_array.html#a8ab3958c10d25114cfab69ae74fa6e5b',1,'CircularDynamicArray::CircularDynamicArray()'],['../class_circular_dynamic_array.html#a93297de998bd314dad85ed43f92d24cb',1,'CircularDynamicArray::CircularDynamicArray(int s)'],['../class_circular_dynamic_array.html#a49a7100f8aa9a9c154eecc52e986009e',1,'CircularDynamicArray::CircularDynamicArray(const CircularDynamicArray &amp;src)']]],
-  ['clear_2',['clear',['../class_circular_dynamic_array.html#ad0cbe44025f0a9de4abd2790976f355f',1,'CircularDynamicArray']]]
+  ['ensurelinkedcircularity_0',['ensureLinkedCircularity',['../class_b_heap.html#ad4e6d675521850ba55c07bccaf2eb70b',1,'BHeap']]],
+  ['extractmin_1',['extractMin',['../class_b_heap.html#a4ede7d6b71f641cd419e721458a76512',1,'BHeap']]]
 ];

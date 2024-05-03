@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['decreasesize_0',['decreaseSize',['../class_circular_dynamic_array.html#adb910dedb643f07ae3f59e7ecad374d0',1,'CircularDynamicArray']]],
-  ['delend_1',['delEnd',['../class_circular_dynamic_array.html#ab5a187e71e299ff4bb045d383dec0031',1,'CircularDynamicArray']]],
-  ['delfront_2',['delFront',['../class_circular_dynamic_array.html#a0088a2518cd580f54f68e275a5ee710a',1,'CircularDynamicArray']]]
+  ['ensurelinkedcircularity_0',['ensureLinkedCircularity',['../class_b_heap.html#ad4e6d675521850ba55c07bccaf2eb70b',1,'BHeap']]],
+  ['extractmin_1',['extractMin',['../class_b_heap.html#a4ede7d6b71f641cd419e721458a76512',1,'BHeap']]]
 ];

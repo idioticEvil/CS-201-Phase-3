@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['heapnode_0',['HeapNode',['../class_heap_node.html',1,'HeapNode&lt; KeyType &gt;'],['../class_heap_node.html#ab680433c186ac11051f82c796e6437e3',1,'HeapNode::HeapNode(KeyType k)'],['../class_heap_node.html#a5f39e7b2dec51982f17f24f4c5fa0797',1,'HeapNode::HeapNode(const HeapNode&lt; KeyType &gt; &amp;other)']]]
+  ['increasedegree_0',['increaseDegree',['../class_heap_node.html#a0f6ec28e72ec4c09c1617d9140f83d1d',1,'HeapNode']]],
+  ['insert_1',['insert',['../class_b_heap.html#a86aa5b395f4642d83f3ce02e14fc4e10',1,'BHeap']]]
 ];
